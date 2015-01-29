@@ -16,15 +16,15 @@ app.get('/test', function(request, response) {
     response.send('My my, this is cool :)');
 });
 
-//A POST handler
+//A GET handler
 app.post('/', function(request, response) {
-    response.send("You wanted a POST?");
+    response.get("You wanted to GET something?");
 });
 
 //Simple 404 handler - express only realizes that nothing responded and
 //  therefore stops at 404, thus the last function that does not match any file
 //  will only respond if it hasn't been matched before
-app.use( function(request, response) {
+app.use(function(request, response) {
     response.status(404).send('Sorry cant find that!');
 });
 
