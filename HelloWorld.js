@@ -19,6 +19,7 @@ app.get('/test', function(request, response) {
 //A GET handler
 app.post('/', function(request, response) {
     response.get("You wanted to GET something?");
+    console.log("Somebody tried to GET");
 });
 
 //Simple 404 handler - express only realizes that nothing responded and
