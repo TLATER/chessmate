@@ -17,8 +17,8 @@ app.get('/test', function(request, response) {
 });
 
 //A GET handler
-app.post('/', function(request, response) {
-    response.get("You wanted to GET something?");
+app.get('/', function(request, response) {
+    response.send("You wanted to GET something?");
     console.log("Somebody tried to GET");
 });
 
