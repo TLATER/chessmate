@@ -7,12 +7,12 @@ var app = express();
 //app.METHOD(PATH, HANDLER) - you should be able to decipher that
 //HANDLER is a function that is given a request and a response, both usable
 //objects, much like the java scanner
-app.get('/', function (request, response) {
+app.get('/', function(request, response) {
     response.send('Hello World');
 });
 
 //Same as before, different folder
-app.get('/test', function (request, response) {
+app.get('/test', function(request, response) {
     response.send('My my, this is cool :)');
 });
 
@@ -24,8 +24,8 @@ app.post('/', function(request, response) {
 //Simple 404 handler - express only realizes that nothing responded and
 //  therefore stops at 404, thus the last function that does not match any file
 //  will only respond if it hasn't been matched before
-app.use(function(req, res, next){
-    res.send(404, 'Sorry cant find that!');
+app.use( function(request, response) {
+    response.status(404).send('Sorry cant find that!');
 });
 
 //This initializes the server to port 3000
