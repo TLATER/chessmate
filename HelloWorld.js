@@ -13,15 +13,19 @@ app.get('/', function (request, response) {
 
 //Same as before, different folder
 app.get('/test', function (request, response) {
-    response.send('My my, this is cool :)')
-})
+    response.send('My my, this is cool :)');
+});
+
+app.use(function(req, res, next){
+    res.send(404, 'Sorry cant find that!');
+});
 
 //This initializes the server to port 3000
 var server = app.listen(3000, function () {
-    
+
     //This doesn't work for some reason
     var host = server.address().address;
-    
+
     //This does
     var port = server.address().port;
 
