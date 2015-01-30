@@ -7,6 +7,7 @@ var registerClient = function (request, response) {
     currentUsers.push(new Client(id, request, response));
 
     console.log(currentUsers[id]);
+    console.log(new Client(id, request, response));
 
     // currentUsers[id].timer = setInterval(removeClient(id), 10000);
 
