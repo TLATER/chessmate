@@ -12,7 +12,7 @@ var registerClient = function (request, response) {
     return id;
 };
 
-// Tests client every to see if they are still alive
+// Tests client to see if they are still alive
 var killClient = function (id) {
     if (currentUsers[id].alive === 0) {
         clearInterval(currentUsers[id].timer);
