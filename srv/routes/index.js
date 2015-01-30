@@ -15,7 +15,7 @@ router.get('/testChat', function(request, response) {
 
 // Request contains id and a string
 router.post('/testChat', function(request, response) {
-
+    chat.receive(request, response);
 });
 
 module.exports = router;
