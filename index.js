@@ -15,6 +15,7 @@ var registerClient = function (request, response) {
 // Tests client to see if they are still alive
 var killClient = function (client) {
     if (client.die()) {
+        console.log(client.alive);
         currentUsers.splice(client.id, 1);
         console.log('dead');
     }

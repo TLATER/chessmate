@@ -1,5 +1,6 @@
 // Keeps the Client object alive; If 0 the Client is deleted
 var stayAlive = function() {
+    console.log(this.alive);
     this.alive = 3;
 };
 
