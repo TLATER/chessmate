@@ -23,7 +23,7 @@ var removeClient = function (id) {
 
 var receive = function (request, response) {
     console.log(request.body.id);
-    //currentUser[request.body.id].resetLifetime();
+    console.log(currentUser[request.body.id].id);
 };
 
 exports.registerClient = registerClient;
