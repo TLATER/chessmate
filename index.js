@@ -24,7 +24,7 @@ var findById = function (id) {
     for (var i=0; i<currentUsers.length; i++)
 
         console.log(i);
-        console.log(id);
+        console.log(currentUsers[i].getId());
         console.log(currentUsers.length);
 
         if (currentUsers[i].getId() === id)
