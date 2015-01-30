@@ -30,6 +30,8 @@ var receive = function (request, response) {
     var callingClient = findById(escapeHtml(request.body.id));
 
     callingClient.stayAlive();
+        console.log(request.body);
+        console.log(escapeHtml(request.body.msg));
 
     if (!(escapeHtml(request.body.msg) === undefined)) {
         console.log(escapeHtml(request.body.msg));
