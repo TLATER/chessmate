@@ -9,14 +9,17 @@ setInterval(function() {
 }, 5000);
 
 document.getElementById('input').onkeypress = function(event) {
-    console.log(event);
+    if (event.keyIdentifier === "Enter") {
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "/testChat",
-    //     data: 'id=' + clientId + 'msg=' + message,
-    //     success: function(msg) {
-    //         console.log(msg);
-    //     }
-    // });
+        console.log('yep');
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: "/testChat",
+        //     data: 'id=' + clientId + 'msg=' + message,
+        //     success: function(msg) {
+        //         console.log(msg);
+        //     }
+        // });
+    }
 };
