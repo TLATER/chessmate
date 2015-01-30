@@ -28,12 +28,10 @@ var findById = function (id) {
 
 var receive = function (request, response) {
     var callingClient = findById(request.body.id);
-    console.log(request.body.msg);
-    console.log(!(request.body.msg === undefined));
 
     callingClient.stayAlive();
 
-    if (!request.body.msg === undefined) {
+    if (!(request.body.msg === undefined)) {
         var send = new Text(callingClient, request.body.msg, currentUsers);
         send.broadcast();
     }
