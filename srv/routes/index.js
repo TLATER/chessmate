@@ -9,11 +9,12 @@ router.get('/', function(req, res, next) {
 
 // GET test chat implementation
 router.get('/testChat', function(request, response) {
-    var id = chat.registerClient(request, response);
-    response.render('chat.ejs', { title: 'Hello World', id: id });
+    response.render('chat.ejs', { title: 'Hello World'});
 });
 
 router.get('/testChat/messageDistribute', function(request, response) {
+    var id = chat.registerClient(request, response);
+
     response.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
@@ -21,11 +22,12 @@ router.get('/testChat/messageDistribute', function(request, response) {
     });
     response.write('\n');
 
+    response.write('id:' + id +'\n\n');
+
     setInterval(function () {
         //var d = new Date();
         //response.write('id: ' + d.getMilliseconds() + '\n');
         response.write('data:hi\n\n');
-        response.write('retry:5000\n');
     }, 1000);
 });
 
