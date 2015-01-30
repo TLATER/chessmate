@@ -19,6 +19,8 @@ var killClient = function (client) {
 };
 
 var receive = function (request, response) {
+    console.log('Stay alive ' + request.body.id);
+
     currentUsers[request.body.id].stayAlive();
 };
 
