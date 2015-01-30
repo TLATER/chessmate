@@ -31,6 +31,8 @@ var findById = function (id) {
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
     findById(request.body.id).stayAlive;
+
+    response.send('Done');
 };
 
 exports.registerClient = registerClient;
