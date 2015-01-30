@@ -25,7 +25,7 @@ router.get('/testChat/getmessage', function(request, response) {
         var d = new Date();
         response.write('id: ' + d.getMilliseconds() + '\n');
         response.write('data:hi\n\n');
-    }, 1000);
+    }, 2000);
 });
 
 // Request contains id and a string
