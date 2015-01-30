@@ -23,7 +23,7 @@ var removeClient = function (id) {
 
 var receive = function (request, response) {
     console.log(request.body.id);
-    console.log(currentUsers[0]);
+    console.log(currentUsers[0].id);
     currentUsers[request.body.id].resetLifetime();
 };
 
