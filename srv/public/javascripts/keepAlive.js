@@ -1,3 +1,5 @@
+var clientId;
+
 setInterval(function() {
     $.ajax({
         type: "POST",
