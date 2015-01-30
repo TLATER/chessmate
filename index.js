@@ -28,9 +28,9 @@ var testId = function (id, element) {
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
     console.log( currentUsers.find(function(element) {
-        console.log(request.body.id);
-        console.log(element);
-        testId(request.body.id, element);
+        // console.log(request.body.id);
+        // console.log(element);
+        // testId(request.body.id, element);
     }) );
 
     //findClient(request.body.id).stayAlive();
