@@ -14,6 +14,8 @@ var broadcast = function() {
         this.room[i].response.write('id:' + this.room[i].id + '\n\n');
         this.room[i].response.write('data:' + string + '\n\n');
     }
+
+    return;
 };
 
 module.exports = MessageDistribute;
