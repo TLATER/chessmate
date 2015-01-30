@@ -26,7 +26,7 @@ var findById = function (id) {
             return currentUsers[i];
 
     return 'Looking for id ' + id + ' gave no results, even if there is '
-            + currentUsers[id];
+            + currentUsers[id].id;
 };
 
 var receive = function (request, response) {
