@@ -16,6 +16,10 @@ var die = function() {
     return dead;
 };
 
+var getId = function() {
+    return this.id;
+}
+
 // Create a Client that holds the request/response for a browser
 var Client = function(id, request, response) {
     this.id = id;
@@ -26,6 +30,7 @@ var Client = function(id, request, response) {
 
     this.stayAlive = stayAlive;
     this.die = die;
+    this.getId = getId;
 };
 
 module.exports = Client;

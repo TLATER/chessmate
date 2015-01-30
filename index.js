@@ -27,11 +27,11 @@ var findById = function (id) {
         console.log(id);
         console.log(currentUsers.length);
 
-        if (currentUsers[i].id === id)
+        if (currentUsers[i].getId() === id)
             return currentUsers[i];
 
     return 'Looking for id ' + id + ' gave no results, even if there is '
-            + currentUsers[id].id;
+            + currentUsers[id].getId();
 };
 
 var receive = function (request, response) {
