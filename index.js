@@ -5,7 +5,7 @@ var currentUsers = [];
 var registerClient = function (request, response) {
     var id = currentUsers.length + 1;
     var newClient = new Client(id, request, response);
-    currentUsers.push(newClient);
+    currentUsers[0] = newClient;
 
     console.log(currentUsers[id]);
 
