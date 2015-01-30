@@ -11,12 +11,6 @@ var registerClient = function (request, response) {
 
     var check = setInterval(removeClient(id), 10000);
 
-    console.log(check);
-
-    currentUsers[id].check = check;
-
-    console.log(currentUsers[id].check);
-
     return id;
 };
 
