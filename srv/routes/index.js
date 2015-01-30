@@ -25,6 +25,7 @@ router.get('/testChat/getmessage', function(request, response) {
         var d = new Date();
         response.write('id: ' + d.getMilliseconds() + '\n');
         response.write('data:hi\n\n');
+        response.write('retry:5000\n');
     }, 2000);
 });
 
