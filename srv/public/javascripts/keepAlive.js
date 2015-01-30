@@ -1,7 +1,7 @@
 setInterval(function() {
     $.ajax({
         type: "POST",
-        url: "/player",
+        url: "/testChat",
         data: 'id=clientId',
         success: function(msg) {
             console.log(msg);
