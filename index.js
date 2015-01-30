@@ -23,7 +23,7 @@ var registerClient = function (request, response) {
 // };
 
 var receive = function (request, response) {
-    console.log(request.body.id);
+    //console.log(request.body.id);
 };
 
 exports.registerClient = registerClient;
