@@ -22,7 +22,7 @@ var killClient = function (client) {
 
 var findById = function (id) {
     for (var i=0; i<currentUsers.length; i++)
-        if (currentUsers[i].getId() === parseInt(id, 10))
+        if (currentUsers[i].id === parseInt(id, 10))
             return currentUsers[i];
 
     return null;
@@ -30,7 +30,7 @@ var findById = function (id) {
 
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
-    console.log( findById(request.body.id) );
+    findById(request.body.id).stayAlive;
 };
 
 exports.registerClient = registerClient;
