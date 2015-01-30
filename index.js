@@ -20,6 +20,7 @@ var killClient = function (client) {
 
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
+    console.log('Maps to ' + currentUsers[request.body.id].id);
 
     currentUsers[request.body.id].stayAlive();
 };
