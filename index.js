@@ -29,6 +29,7 @@ var findClient = function (id) {
 
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
+    console.log(findClient(request.body.id));
 
     findClient(request.body.id).stayAlive();
 };
