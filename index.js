@@ -16,6 +16,8 @@ var killClient = function (client) {
     if (client.die()) {
         currentUsers.splice(client.id, 1);
     }
+
+    return;
 };
 
 var findById = function (id) {
@@ -40,6 +42,8 @@ var receive = function (request, response) {
     }
     else
         response.send('Done');
+
+    return;
 };
 
 //Credit where credit is due, this is useful, mate. github.com/kiprobinson,
