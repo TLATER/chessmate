@@ -13,7 +13,7 @@ router.get('/testChat', function(request, response) {
     response.render('chat.ejs', { title: 'Hello World', id: id });
 });
 
-router.get('/testChat/getmessage', function(request, response) {
+router.get('/testChat/messageDistribute', function(request, response) {
     response.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
