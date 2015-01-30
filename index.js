@@ -50,6 +50,8 @@ var receive = function (request, response) {
 function escapeHtml(text) {
   if (text === undefined)
     return undefined;
+  if (text === '')
+    return undefined;
 
   var map = {
     '&': '&amp;',
