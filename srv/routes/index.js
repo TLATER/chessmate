@@ -8,12 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 // GET test chat implementation
+// router.get('/testChat', function(request, response) {
+// });
+
 router.get('/testChat', function(request, response) {
     var id = chat.registerClient(request, response);
     response.render('chat.ejs', { title: 'Hello World', id: id });
-});
 
-router.get('/testChat/messageDistribute', function(request, response) {
     response.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',

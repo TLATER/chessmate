@@ -1,4 +1,4 @@
-var stream = new EventSource('/testChat/messageDistribute');
+var stream = new EventSource('/testChat');
 stream.onmessage = function(response) {
     var newText = document.createElement('div');
     newText.innerHTML = response;
