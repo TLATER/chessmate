@@ -13,7 +13,7 @@ var input = document.getElementById('input');
 
 input.onkeypress = function(event) {
     if (event.keyIdentifier === "Enter") {
-        var data = escapeHtml('id=' + input.value + '&msg=' + input.value);
+        var data = 'id=' + escapeHtml(window.clientId) + '&msg=' + escapeHtml(input.value);
         $.ajax({
             type: "POST",
             url: "/testChat",
