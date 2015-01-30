@@ -28,6 +28,8 @@ var testId = function (id, element) {
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
     console.log( currentUsers.find(function(element) {
+        console.log(element);
+        console.log(request.body.id);
         testId(request.body.id, element);
     }) );
 
