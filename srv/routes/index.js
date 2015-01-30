@@ -20,10 +20,11 @@ router.get('/testChat/messageDistribute', function(request, response) {
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive'
     });
-    response.write('\n');
+    response.write("retry: 5000\n");
+
 
     response.write('id:' + id +'\n\n');
-    response.send('data:I\'m a wizard, Hagrid!\n\n');
+    response.write('data:I\'m a wizard, Hagrid!\n\n');
 });
 
 router.post('/testChat', function(request, response) {
