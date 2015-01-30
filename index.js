@@ -7,6 +7,8 @@ var registerClient = function (request, response) {
     var newClient = new Client(id, request, response);
     currentUsers.push(newClient);
     currentUsers[id].timer = setInterval(function() {killClient (id)}, 10000);
+
+    console.log("New client connected " + id);
     return id;
 };
 
@@ -22,8 +24,6 @@ var killClient = function (id) {
 };
 
 var receive = function (request, response) {
-    console.log(request.body.id);
-    console.log(currentUsers[0].alive);
     currentUsers[request.body.id].stayAlive();
 };
 
