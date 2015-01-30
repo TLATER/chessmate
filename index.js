@@ -6,11 +6,7 @@ var registerClient = function (request, response) {
     var id = currentUsers.length;
     var newClient = new Client(id, request, response);
     currentUsers.push(newClient);
-
-    console.log(currentUsers[id]);
-
     currentUsers[id].timer = setInterval(function() {removeClient (id)}, 10000);
-
     return id;
 };
 
@@ -22,12 +18,12 @@ var removeClient = function (id) {
         console.log("Deleted client " + id);
     } else {
         currentUsers[id].alive -= 1;
-        console.log(currentUsers[id].alive);
     }
 };
 
 var receive = function (request, response) {
     //console.log(request.body.id);
+    currentUser[request.body.id].resetLifetime();
 };
 
 exports.registerClient = registerClient;
