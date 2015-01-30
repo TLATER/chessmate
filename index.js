@@ -6,16 +6,16 @@ var registerClient = function (request, response) {
     var id = currentUsers.length;
     var newClient = new Client(id, request, response);
     currentUsers.push(newClient);
-    currentUsers[id].timer = setInterval(function() {removeClient (id)}, 10000);
+    currentUsers[id].timer = setInterval(function() {killClient (id)}, 10000);
     return id;
 };
 
 // Tests client every to see if they are still alive
-var removeClient = function (id) {
+var killClient = function (id) {
     if (currentUsers[id].alive === 0) {
         clearInterval(currentUsers[id].timer);
         currentUsers.splice(id, 1);
-        console.log("Deleted client " + id);
+        console.log("Killed client " + id);
     } else {
         currentUsers[id].alive -= 1;
     }
@@ -23,8 +23,8 @@ var removeClient = function (id) {
 
 var receive = function (request, response) {
     console.log(request.body.id);
-    console.log(currentUsers[0].id);
-    currentUsers[request.body.id].resetLifetime();
+    console.log(currentUsers[0].alive);
+    currentUsers[request.body.id].stayAlive();
 };
 
 exports.registerClient = registerClient;

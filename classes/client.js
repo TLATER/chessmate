@@ -1,5 +1,5 @@
 // Keeps the Client object alive; If 0 the Client is deleted
-var resetLifetime = function() {
+var stayAlive = function() {
     this.alive = 2;
 };
 
@@ -11,7 +11,7 @@ var Client = function(id, request, response) {
     this.alive = 2;
     this.timer;
 
-    this.resetLifetime = resetLifetime;
+    this.stayAlive = stayAlive;
 };
 
 module.exports = Client;
