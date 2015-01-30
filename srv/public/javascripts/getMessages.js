@@ -1,6 +1,6 @@
 var stream = new EventSource('/testChat/messageDistribute');
 stream.onmessage = function(response) {
-    var clientId = response.lastEventId;
+    clientId = response.lastEventId;
 
     var newText = document.createElement('div');
     newText.innerHTML = response;
