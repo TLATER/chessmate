@@ -4,16 +4,16 @@ var stayAlive = function() {
 };
 
 var die = function() {
-    if (this.alive === 0) {
+    var dead = this.alive === 0;
+
+    if (dead) {
         clearInterval(this.timer);
         console.log("Killed client " + this.id);
-
-        return true;
     } else {
         this.alive -= 1;
-
-        return false;
     }
+
+    return dead;
 };
 
 // Create a Client that holds the request/response for a browser
