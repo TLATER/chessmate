@@ -24,13 +24,13 @@ router.get('/testChat/messageDistribute', function(request, response) {
 
     response.write('id:' + id +'\n\n');
 
-    setInterval(function () {
-        response.write('data:hi\n\n');
-    }, 1000);
+    // setInterval(function () {
+    //     response.write('data:hi\n\n');
+    // }, 1000);
 });
 
 router.post('/testChat', function(request, response) {
-    chat.revive(request, response);
+    chat.receive(request, response);
 });
 
 module.exports = router;
