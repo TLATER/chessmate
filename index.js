@@ -25,7 +25,7 @@ var findById = function (id) {
         if (currentUsers[i].id === id)
             return currentUsers[i];
 
-    return null;
+    return 'Looking for id ' + id + ' gave no results';
 };
 
 var receive = function (request, response) {
