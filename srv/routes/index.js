@@ -21,7 +21,7 @@ router.get('/testChat/getmessage', function(request, response) {
     });
     response.write('\n');
 
-    setInterval(function (response) {
+    setInterval(function () {
         var d = new Date();
         response.write('id: ' + d.getMilliseconds() + '\n');
         response.write('data:hi\n\n');
