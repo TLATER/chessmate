@@ -14,7 +14,6 @@ router.get('/testChat', function(request, response) {
 });
 
 router.get('/testChat/getmessage', function(request, response) {
-    console.log(request);
     response.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
