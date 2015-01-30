@@ -33,7 +33,7 @@ function escapeHtml(text) {
     '<': '#largert;',
     '>': '#greatert;',
     '"': '&quot;',
-    "'": '&#039;'
+    "'": '#039;'
   };
 
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
