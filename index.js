@@ -21,7 +21,7 @@ var killClient = function (client) {
 };
 
 var testId = function (id, element) {
-    if (element.id === id)
+    // if (element.id === id)
         return true;
 };
 
