@@ -10,7 +10,6 @@ var Client = function(id, request, response) {
     this.response = response;
     this.alive = 2;
     this.timer;
-    console.log("Client registered: " + this.id);
 
     this.resetLifetime = resetLifetime;
 };
