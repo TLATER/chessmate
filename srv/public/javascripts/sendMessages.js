@@ -8,6 +8,9 @@ setInterval(function() {
     });
 }, 5000);
 
+document.getElementById('input').onkeypress = function(event) {
+    console.log(event);
+
     // $.ajax({
     //     type: "POST",
     //     url: "/testChat",
@@ -16,3 +19,4 @@ setInterval(function() {
     //         console.log(msg);
     //     }
     // });
+};

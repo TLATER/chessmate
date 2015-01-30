@@ -23,7 +23,7 @@ router.get('/testChat/messageDistribute', function(request, response) {
     response.write('\n');
 
     response.write('id:' + id +'\n\n');
-    response.write('data:Welcome to the global chat!\n\n');
+    response.write('data:I\'m a wizard, Hagrid!\n\n');
 
     // setInterval(function () {
     //     response.write('data:hi\n\n');
