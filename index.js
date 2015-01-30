@@ -21,17 +21,11 @@ var killClient = function (client) {
 };
 
 var findById = function (id) {
-    for (var i=0; i<currentUsers.length; i++) {
-
-        console.log(typeof(currentUsers[i].getId()) + '=' + typeof(id));
-        console.log(currentUsers[i].getId() === parseInt(id));
-
-        if (currentUsers[i].getId() === id)
+    for (var i=0; i<currentUsers.length; i++)
+        if (currentUsers[i].getId() === parseInt(id, 10))
             return currentUsers[i];
-    }
 
-    return 'Looking for id ' + id + ' gave no results, even if there is '
-            + currentUsers[id].getId();
+    return null;
 };
 
 var receive = function (request, response) {
