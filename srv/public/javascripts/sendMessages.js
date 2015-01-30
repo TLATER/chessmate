@@ -16,7 +16,7 @@ input.onkeypress = function(event) {
         $.ajax({
             type: "POST",
             url: "/testChat",
-            data: 'id=' + window.clientId + 'msg=' + message,
+            data: 'id=' + window.clientId + '&msg=' + message,
             success: function(msg) {
                 console.log(msg);
             }
