@@ -28,7 +28,7 @@ var findById = function (id) {
 
 var receive = function (request, response) {
     var callingClient = findById(request.body.id);
-    console.log(callingClient);
+    console.log(request.body.id);
 
     callingClient.stayAlive();
 
