@@ -9,7 +9,7 @@ var Client = function(id, request, response) {
     this.request = request;
     this.response = response;
     this.alive = 2;
-    this.check;
+    this.timer;
 
     this.resetLifetime = resetLifetime;
 };

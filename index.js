@@ -9,17 +9,17 @@ var registerClient = function (request, response) {
 
     console.log(currentUsers[id]);
 
-    var check = setInterval(removeClient(id), 10000);
+    currentUsers[id].timer = setInterval(removeClient, 10000);
 
     return id;
 };
 
 // Tests client every to see if they are still alive
-var removeClient = function (id) {
-    if (currentUsers[id].alive === 0)
-        currentUsers.splice(id, 1);
+var removeClient = function () {
+    if (this.alive === 0)
+        currentUsers.splice(this.id, 1);
 
-    currentUsers[id].alive -= 1;
+    this.alive -= 1;
 };
 
 var receive = function (request, response) {
