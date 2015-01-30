@@ -3,6 +3,19 @@ var stayAlive = function() {
     this.alive = 3;
 };
 
+var die = function() {
+    if (this.alive === 0) {
+        clearInterval(this.timer);
+        console.log("Killed client " + this.id);
+
+        return true;
+    } else {
+        this.alive -= 1;
+
+        return false;
+    }
+};
+
 // Create a Client that holds the request/response for a browser
 var Client = function(id, request, response) {
     this.id = id;
@@ -12,6 +25,7 @@ var Client = function(id, request, response) {
     this.timer;
 
     this.stayAlive = stayAlive;
+    this.die = die;
 };
 
 module.exports = Client;
