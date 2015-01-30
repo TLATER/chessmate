@@ -20,7 +20,7 @@ router.get('/testChat/getmessage', function(request, response) {
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive'
     });
-    response.send('hi');
+    response.write('\nhi\n');
 });
 
 // Request contains id and a string
