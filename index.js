@@ -8,16 +8,13 @@ var registerClient = function (request, response) {
     currentUsers.push(newClient);
     newClient.timer = setInterval(function() {killClient (newClient)}, 10000);
 
-    console.log("New client connected " + id);
     return id;
 };
 
 // Tests client to see if they are still alive
 var killClient = function (client) {
     if (client.die()) {
-        console.log(client.alive);
         currentUsers.splice(client.id, 1);
-        console.log('dead');
     }
 };
 
@@ -30,7 +27,6 @@ var findById = function (id) {
 };
 
 var receive = function (request, response) {
-    console.log('Stay alive ' + request.body.id);
     findById(request.body.id).stayAlive();
 
     response.send('Done');

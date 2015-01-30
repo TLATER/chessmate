@@ -9,7 +9,6 @@ var die = function() {
 
     if (dead) {
         clearInterval(this.timer);
-        console.log("Killed client " + this.id);
     } else {
         this.alive -= 1;
     }
