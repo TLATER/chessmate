@@ -30,8 +30,6 @@ var receive = function (request, response) {
     var id = escapeHtml(request.body.id);
     var msg = escapeHtml(request.body.msg);
 
-    console.log(id + ', ' + msg);
-
     var callingClient = findById(id);
 
     callingClient.stayAlive();
@@ -48,8 +46,6 @@ var receive = function (request, response) {
 // http://stackoverflow.com/questions/1787322/
 //                     htmlspecialchars-equivalent-in-javascript/4835406#4835406
 function escapeHtml(text) {
-    console.log(text);
-    console.log(typeof(text));
 
   if (text === undefined)
     return undefined;
