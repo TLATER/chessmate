@@ -25,15 +25,12 @@ router.get('/testChat/messageDistribute', function(request, response) {
     response.write('id:' + id +'\n\n');
 
     setInterval(function () {
-        //var d = new Date();
-        //response.write('id: ' + d.getMilliseconds() + '\n');
         response.write('data:hi\n\n');
     }, 1000);
 });
 
-// Request contains id and a string
 router.post('/testChat', function(request, response) {
-    chat.receive(request, response);
+    chat.revive(request, response);
 });
 
 module.exports = router;

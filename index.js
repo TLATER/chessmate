@@ -1,4 +1,5 @@
 var Client = require('./classes/client');
+var Text = require('./classes/messageDistribute');
 
 var currentUsers = [];
 
@@ -11,7 +12,6 @@ var registerClient = function (request, response) {
     return id;
 };
 
-// Tests client to see if they are still alive
 var killClient = function (client) {
     if (client.die()) {
         currentUsers.splice(client.id, 1);
@@ -27,9 +27,16 @@ var findById = function (id) {
 };
 
 var receive = function (request, response) {
-    findById(request.body.id).stayAlive();
+    var callingClient = findById(request.body.id);
 
-    response.send('Done');
+    callingClient.stayAlive();
+
+    if (!request.body.msg === '') {
+        var send = new Text(callingClient, request.body.msg, currentUsers);
+        send.broadcast();
+    }
+    else
+        response.send('Done');
 };
 
 exports.registerClient = registerClient;
