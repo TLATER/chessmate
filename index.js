@@ -5,9 +5,9 @@ var currentUsers = [];
 var registerClient = function (request, response) {
     var id = currentUsers.length + 1;
     currentUsers.push(new Client(id, request, response));
+    currentUsers.push('something');
 
     console.log(currentUsers[id]);
-    console.log(new Client(id, request, response));
 
     // currentUsers[id].timer = setInterval(removeClient(id), 10000);
 
