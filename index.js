@@ -31,7 +31,7 @@ var receive = function (request, response) {
 
     callingClient.stayAlive();
 
-    if (!request.body.msg === '') {
+    if (!request.body.msg === undefined) {
         var send = new Text(callingClient, request.body.msg, currentUsers);
         send.broadcast();
     }
