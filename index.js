@@ -21,7 +21,7 @@ var killClient = function (client) {
 };
 
 var findById = function (id) {
-    for (var i=0; i<currentUsers.length; i++)
+    for (var i=0; i<currentUsers.length; i++) {
 
         console.log(i);
         console.log(currentUsers[i].getId());
@@ -29,6 +29,7 @@ var findById = function (id) {
 
         if (currentUsers[i].getId() === id)
             return currentUsers[i];
+    }
 
     return 'Looking for id ' + id + ' gave no results, even if there is '
             + currentUsers[id].getId();
