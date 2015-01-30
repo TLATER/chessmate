@@ -1,10 +1,10 @@
 var Client = require('./classes/client');
 
-var currentUsers = [];
+var currentUsers = ['test'];
 
 var registerClient = function (request, response) {
     var id = currentUsers.length + 1;
-    currentUsers.push = new Client(id, request, response);
+    currentUsers.push(new Client(id, request, response));
     console.log(currentUsers.length);
     console.log(currentUsers[0]);
 
