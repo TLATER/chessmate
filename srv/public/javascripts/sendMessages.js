@@ -30,8 +30,8 @@ input.onkeypress = function(event) {
 function escapeHtml(text) {
   var map = {
     '&': '&amp;',
-    '<': 'largert;',
-    '>': 'greatert;',
+    '<': '#largert;',
+    '>': '#greatert;',
     '"': '&quot;',
     "'": '&#039;'
   };
