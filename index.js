@@ -32,7 +32,7 @@ var receive = function (request, response) {
     callingClient.stayAlive();
 
     if (!(escapeHtml(request.body.msg) === undefined)) {
-        console.log(escapeHtml(request.body.msg);
+        console.log(escapeHtml(request.body.msg));
         var send = new Text(callingClient, escapeHtml(request.body.msg), currentUsers);
         send.broadcast();
     }
