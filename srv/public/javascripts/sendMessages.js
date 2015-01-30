@@ -2,7 +2,7 @@ setInterval(function() {
     $.ajax({
         type: "POST",
         url: "/testChat",
-        data: 'id=' + clientId,
+        data: 'id=' + window.clientId,
         success: function(msg) {
         }
     });
