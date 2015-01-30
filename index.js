@@ -23,7 +23,7 @@ var killClient = function (id) {
 
 var receive = function (request, response) {
     console.log(request.body.id);
-    console.log(currentUsers[0].id);
+    console.log(currentUsers[0].alive);
     currentUsers[request.body.id].stayAlive();
 };
 
