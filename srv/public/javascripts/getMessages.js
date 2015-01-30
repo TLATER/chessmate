@@ -1,5 +1,3 @@
-var clientId
-
 var stream = new EventSource('/testChat/messageDistribute');
 stream.onmessage = function(response) {
     clientId = response.lastEventId;
