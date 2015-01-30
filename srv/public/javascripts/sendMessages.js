@@ -1,8 +1,9 @@
 setInterval(function() {
+    var data = escapeHtml('id=' + window.clientId);
     $.ajax({
         type: "POST",
         url: "/testChat",
-        data: 'id=' + window.clientId,
+        data: data,
         success: function(msg) {
         }
     });
@@ -12,11 +13,11 @@ var input = document.getElementById('input');
 
 input.onkeypress = function(event) {
     if (event.keyIdentifier === "Enter") {
-        var message = input.value;
+        var data = escapeHtml('id=' + input.value + '&msg=' + input.value);
         $.ajax({
             type: "POST",
             url: "/testChat",
-            data: 'id=' + window.clientId + '&msg=' + message,
+            data: data,
             success: function(msg) {
                 console.log(msg);
             }
@@ -25,3 +26,15 @@ input.onkeypress = function(event) {
         input.value = '';
     }
 };
+
+function escapeHtml(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
