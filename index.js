@@ -20,14 +20,16 @@ var killClient = function (client) {
     }
 };
 
-var testId = function (id) {
+var testId = function (id, element) {
     if (element.id === id)
         return true;
 };
 
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
-    console.log( currentUsers.find(function(element) {testId(id)}) );
+    console.log( currentUsers.find(function(element) {
+        testId(request.bodyid, element);
+    }) );
 
     //findClient(request.body.id).stayAlive();
 };
