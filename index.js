@@ -1,4 +1,4 @@
-var Client = require('client');
+var Client = require('./classes/client');
 
 var currentUsers = [];
 
