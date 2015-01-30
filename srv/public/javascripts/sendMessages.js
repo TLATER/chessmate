@@ -8,18 +8,19 @@ setInterval(function() {
     });
 }, 5000);
 
-document.getElementById('input').onkeypress = function(event) {
+var input = document.getElementById('input');
+
+input.onkeypress = function(event) {
     if (event.keyIdentifier === "Enter") {
 
-        console.log('yep');
-
-        // $.ajax({
-        //     type: "POST",
-        //     url: "/testChat",
-        //     data: 'id=' + clientId + 'msg=' + message,
-        //     success: function(msg) {
-        //         console.log(msg);
-        //     }
-        // });
+        var message = input.value;
+        $.ajax({
+            type: "POST",
+            url: "/testChat",
+            data: 'id=' + window.clientId + 'msg=' + message,
+            success: function(msg) {
+                console.log(msg);
+            }
+        });
     }
 };
