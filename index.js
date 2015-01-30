@@ -21,7 +21,7 @@ var killClient = function (client) {
 };
 
 var findById = function (id) {
-    for (var i=0; i<currentUsers.length; i++)
+    for (var i=0; i<=currentUsers.length; i++)
         if (currentUsers[i].id === id)
             return currentUsers[i];
 
