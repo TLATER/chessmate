@@ -17,12 +17,12 @@ var registerClient = function (request, response) {
 // Tests client every to see if they are still alive
 var removeClient = function (id) {
     if (currentUsers[id].alive === 0) {
-        currentUsers[id].splice(id, 1);
+        currentUsers.splice(id, 1);
         console.log("Deleted client " + id);
+    } else {
+        currentUsers[id].alive -= 1;
+        console.log(currentUsers[id].alive);
     }
-
-    currentUsers[id].alive -= 1;
-    console.log(currentUsers[id].alive);
 };
 
 var receive = function (request, response) {
