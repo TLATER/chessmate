@@ -22,11 +22,11 @@ router.get('/testChat/getmessage', function(request, response) {
     response.write('\n');
 
     setInterval(function () {
-        var d = new Date();
-        response.write('id: ' + d.getMilliseconds() + '\n');
+        //var d = new Date();
+        //response.write('id: ' + d.getMilliseconds() + '\n');
         response.write('data:hi\n\n');
         response.write('retry:5000\n');
-    }, 500);
+    }, 1000);
 });
 
 // Request contains id and a string
