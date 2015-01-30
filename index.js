@@ -27,15 +27,17 @@ var findById = function (id) {
 };
 
 var receive = function (request, response) {
-    var callingClient = findById(escapeHtml(request.body.id));
+    var id = escapeHtml(request.body.id);
+    var msg = escapeHtml(request.body.msg);
+
+    console.log(id + ', ' + msg);
+
+    var callingClient = findById(id);
 
     callingClient.stayAlive();
-        console.log(request.body);
-        console.log(escapeHtml(request.body.msg));
 
-    if (!(escapeHtml(request.body.msg) === undefined)) {
-        console.log(escapeHtml(request.body.msg));
-        var send = new Text(callingClient, escapeHtml(request.body.msg), currentUsers);
+    if (!(msg === undefined)) {
+        var send = new Text(callingClient, msg, currentUsers);
         send.broadcast();
     }
     else
