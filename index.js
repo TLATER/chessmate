@@ -27,10 +27,12 @@ var testId = function (id, element) {
 
 var receive = function (request, response) {
     console.log('Stay alive ' + request.body.id);
-    console.log( currentUsers.find(function(element) {
+    console.log( currentUsers.find(function() {
         // console.log(request.body.id);
         // console.log(element);
         // testId(request.body.id, element);
+
+        return true;
     }) );
 
     //findClient(request.body.id).stayAlive();
