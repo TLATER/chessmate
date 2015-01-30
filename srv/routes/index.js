@@ -18,4 +18,9 @@ router.post('/testChat', function(request, response) {
     chat.receive(request, response);
 });
 
+router.post('/testChat/getmessage', function(request, response) {
+    console.log(request);
+    response.send('hi');
+});
+
 module.exports = router;
