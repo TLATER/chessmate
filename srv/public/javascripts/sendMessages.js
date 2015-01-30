@@ -12,7 +12,6 @@ var input = document.getElementById('input');
 
 input.onkeypress = function(event) {
     if (event.keyIdentifier === "Enter") {
-
         var message = input.value;
         $.ajax({
             type: "POST",
@@ -22,5 +21,7 @@ input.onkeypress = function(event) {
                 console.log(msg);
             }
         });
+
+        input.value = '';
     }
 };
