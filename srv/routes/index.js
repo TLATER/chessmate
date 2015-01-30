@@ -13,21 +13,21 @@ router.get('/testChat', function(request, response) {
     response.render('chat.ejs', { title: 'Hello World', id: id });
 });
 
-// router.get('/testChat/getmessage', function(request, response) {
-//     response.writeHead(200, {
-//         'Content-Type': 'text/event-stream',
-//         'Cache-Control': 'no-cache',
-//         'Connection': 'keep-alive'
-//     });
-//     response.write('\n');
+router.get('/testChat/getmessage', function(request, response) {
+    response.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+    });
+    response.write('\n');
 
-//     setInterval(function () {
-//         //var d = new Date();
-//         //response.write('id: ' + d.getMilliseconds() + '\n');
-//         response.write('data:hi\n\n');
-//         response.write('retry:5000\n');
-//     }, 1000);
-// });
+    setInterval(function () {
+        //var d = new Date();
+        //response.write('id: ' + d.getMilliseconds() + '\n');
+        response.write('data:hi\n\n');
+        response.write('retry:5000\n');
+    }, 1000);
+});
 
 // Request contains id and a string
 router.post('/testChat', function(request, response) {
