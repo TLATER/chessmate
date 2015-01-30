@@ -13,14 +13,14 @@ router.get('/testChat', function(request, response) {
     response.render('chat.ejs', { title: 'Hello World', id: id });
 });
 
+router.get('/testChat/getmessage', function(request, response) {
+    console.log(request);
+    response.send('hi');
+});
+
 // Request contains id and a string
 router.post('/testChat', function(request, response) {
     chat.receive(request, response);
-});
-
-router.post('/testChat/getmessage', function(request, response) {
-    console.log(request);
-    response.send('hi');
 });
 
 module.exports = router;
