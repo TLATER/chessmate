@@ -27,6 +27,4 @@ var splitLines = function (string) {
             i++;
             lastLine = lines[i];
         }
-
-        return lines.join('<br>');
 };
