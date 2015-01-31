@@ -12,7 +12,8 @@ router.get('/testChat', function(request, response) {
     response.render('chat.ejs', { title: 'Hello World'});
 });
 
-// GET for
+// GET for the message distribution. Responds with a continuous stream that
+//  contains all chat events.
 router.get('/testChat/messageDistribute', function(request, response) {
     var id = chat.registerClient(request, response);
 
@@ -23,7 +24,7 @@ router.get('/testChat/messageDistribute', function(request, response) {
     });
     response.write("retry: 5000\n");
 
-
+    // Write first message manually
     response.write('id:' + id +'\n\n');
     response.write('data:I\'m a wizard, Hagrid!\n\n');
 });
