@@ -7,7 +7,7 @@ setInterval(function() {
         success: function(msg) {
         }
     });
-}, 5000);
+}, 3000);
 
 var input = document.getElementById('input');
 
