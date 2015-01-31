@@ -29,6 +29,9 @@ router.get('/testChat/messageDistribute', function(request, response) {
 
 router.post('/testChat', function(request, response) {
     chat.receive(request, response);
+
+    //Do nothing to consume the request and make sure the server doesn't hang
+    request.on('data', function() { });
 });
 
 module.exports = router;
