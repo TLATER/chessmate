@@ -28,5 +28,5 @@ var splitLines = function (string) {
             lastLine = lines[i];
         }
 
-        return lines.join('\n');
+        return lines.join('<br>');
 };
