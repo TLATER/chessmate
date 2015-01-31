@@ -5,6 +5,9 @@ setInterval(function() {
         url: "/testChat",
         data: data,
         success: function(msg) {
+        },
+        error: function() {
+            $.ajax(this);
         }
     });
 }, 3000);

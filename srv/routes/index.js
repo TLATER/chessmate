@@ -29,6 +29,7 @@ router.get('/testChat/messageDistribute', function(request, response) {
     response.write('data:I\'m a wizard, Hagrid!\n\n');
 });
 
+//If testChat receives a message send to all clients
 router.post('/testChat', function(request, response) {
     chat.receive(request, response);
 });
