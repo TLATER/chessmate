@@ -12,6 +12,7 @@ router.get('/testChat', function(request, response) {
     response.render('chat.ejs', { title: 'Hello World'});
 });
 
+// GET for
 router.get('/testChat/messageDistribute', function(request, response) {
     var id = chat.registerClient(request, response);
 
