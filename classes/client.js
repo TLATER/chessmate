@@ -13,7 +13,6 @@ var Client = function(id, request, response) {
 // Keeps the Client object alive; If 0 the Client is deleted
 var stayAlive = function() {
     this.alive = 3;
-    return;
 };
 
 var die = function() {

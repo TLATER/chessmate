@@ -28,9 +28,7 @@ router.get('/testChat/messageDistribute', function(request, response) {
 });
 
 router.post('/testChat', function(request, response) {
-    //"Consume" the data to avoid clogging
-    chat.receive(request);
-    response.send('Accepted');
+    chat.receive(request, response);
 });
 
 module.exports = router;

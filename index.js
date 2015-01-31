@@ -13,11 +13,8 @@ var registerClient = function (request, response) {
 };
 
 var killClient = function (client) {
-    if (client.die()) {
+    if (client.die())
         currentUsers.splice(client.id, 1);
-    }
-
-    return;
 };
 
 var findById = function (id) {
@@ -40,10 +37,9 @@ var receive = function (request, response) {
         var send = new Text(callingClient, msg, currentUsers);
         send.broadcast();
     }
-    else
-        response.send('Done');
 
-    return;
+    //Remember to return a response so that the server doesn't clog
+    response.send('Request accepted');
 };
 
 //Credit where credit is due, this is useful, mate. github.com/kiprobinson,
