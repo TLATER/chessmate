@@ -5,8 +5,17 @@ stream.onmessage = function(response) {
     console.log(response);
 
     var newText = document.createElement('div');
+
     if (response.data.length > 70) {
-        var lines = [response.data.slice(0, 70), response.data.slice(70)];
+        splitLines(response.data);
+    }
+
+    newText.innerHTML = response.data;
+    document.getElementById('display').appendChild(newText);
+};
+
+var splitLines = function (string) {
+    var lines = [string.slice(0, 70), string.slice(70)];
 
         var i = 1;
         var lastLine = lines[i];
@@ -19,8 +28,5 @@ stream.onmessage = function(response) {
             lastLine = lines[i];
         }
 
-        response.data = lines.join('\n');
-    }
-    newText.innerHTML = response.data;
-    document.getElementById('display').appendChild(newText);
+        return lines.join('\n');
 };
