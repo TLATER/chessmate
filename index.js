@@ -30,6 +30,8 @@ var receive = function (request, response) {
     var msg = escapeHtml(request.body.msg);
 
     var callingClient = findById(id);
+    console.log('Calling client: ' + id);
+    console.log('Remaining lifetime: ' + callingClient.alive);
 
     callingClient.stayAlive();
 
