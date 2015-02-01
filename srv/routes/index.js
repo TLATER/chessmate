@@ -1,7 +1,7 @@
 var express = require('express');
 var chat = require('chessmate/testChat');
 var router = express.Router();
-var lauren = require('laurenTest');
+var lauren = require('chessmate/laurenTest');
 
 
 /* GET home page. */
