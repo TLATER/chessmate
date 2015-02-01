@@ -1,6 +1,7 @@
 var express = require('express');
 var chat = require('chessmate/testChat');
 var router = express.Router();
+var lauren = require('laurenTest');
 
 
 /* GET home page. */
@@ -35,14 +36,20 @@ router.post('/testChat', function(request, response) {
     chat.receive(request, response);
 });
 
-
+/*Most basic webapp implementation. Read all the code that is referenced within
+  these if you need to learn*/
 
 //Lauren's mongooseDB test implementation. Use this if you want to fiddle
 router.get('/lauren', function(request, response) {
     response.render('lauren.ejs', { title: 'laurenTest' });
 });
 
+//Lauren's mongooseDB test webapp. Use this if you want to fiddle
+router.post('/lauren', function(request, response) {
+    var webapp = new lauren(request, response);
 
+    webapp.respond();
+});
 
 
 module.exports = router;

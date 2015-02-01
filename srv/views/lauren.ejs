@@ -7,6 +7,26 @@
     </head>
     <body>
         This is just lauren's test page. She'll place whatever she wants in
-        here.
+        here. :D
+
+        <button onclick='getText()'>Test!</button>
+
     </body>
+    <!--Script section-->
+        <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+        <script type='text/javascript'>
+            function getText() {
+                $.ajax({
+                    type: "POST",
+                    url: "/lauren",
+                    success: function(response) {
+                        alert(response);
+                    },
+                    error: function() {
+                        $.ajax(this);
+                    }
+                });
+            }
+        </script>
+    <!--/Script section-->
 </html>
