@@ -1,6 +1,8 @@
 var express = require('express');
-var chat = require('chessmate');
+var chat = require('chessmate/testChat');
 var router = express.Router();
+
+//Yes, this is the right file, Lauren. woooo
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
