@@ -2,7 +2,6 @@ var express = require('express');
 var chat = require('chessmate/testChat');
 var router = express.Router();
 
-//Yes, this is the right file, Lauren. woooo
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -35,5 +34,15 @@ router.get('/testChat/messageDistribute', function(request, response) {
 router.post('/testChat', function(request, response) {
     chat.receive(request, response);
 });
+
+
+
+//Lauren's mongooseDB test implementation. Use this if you want to fiddle
+router.get('/lauren', function(request, response) {
+    response.render('lauren.ejs', { title: 'laurenTest' });
+});
+
+
+
 
 module.exports = router;
