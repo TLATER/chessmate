@@ -9,7 +9,8 @@ var lauren = require('chessmate/laurenTest');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    //res.render('index', { title: 'Express' });
+    res.send(JSON.stringify(req));
 });
 
 // GET test chat implementation
