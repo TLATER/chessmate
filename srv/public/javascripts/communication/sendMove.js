@@ -2,7 +2,7 @@
 var input = $('#command');
 
 //When the send-button is clicked, send the command
-$('#send-button').click(function() {
+$('#command-send-button').click(function() {
     sendCommand();
 });
 
