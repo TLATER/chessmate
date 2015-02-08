@@ -3,7 +3,7 @@ var input = $('#command');
 
 //If enter is pressed in the input element, send the command
 input.keypress(function(event) {
-    if (event.keyIdentifier === "Enter") {
+    if (event.keyCode === 13) {
         sendCommand();
     }
 });
