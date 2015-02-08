@@ -1,6 +1,13 @@
 //The input DOM element
 var input = $('#command');
 
+//If enter is pressed in the input element, send the command
+input.onkeypress = function(event) {
+    if (event.keyIdentifier === "Enter") {
+        sendCommand();
+    }
+};
+
 //When the send-button is clicked, send the command
 $('#command-send-button').click(function() {
     sendCommand();
