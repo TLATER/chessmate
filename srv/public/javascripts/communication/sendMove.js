@@ -19,6 +19,9 @@ function sendCommand() {
     var command = input.val();
     //Reset the input element to show nothing
     input.val('');
+    //If the command is empty, do nothing
+    if (command === '')
+        return;
 
     //POST using ajax
     $.ajax({
