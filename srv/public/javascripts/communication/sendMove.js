@@ -4,7 +4,7 @@ var input = $('#command');
 //If enter is pressed in the input element, send the command
 input.onkeypress = function(event) {
     if (event.keyIdentifier === "Enter") {
-        sendCommand();
+        console.log('Test');
     }
 };
 
