@@ -1,3 +1,10 @@
+/*
+ * Sends a command from an input field to the server and logs the response
+ *
+ * Use this for testing, I will implement something to update the board
+ * once we're there. Do your thing now, I don't want to do this alone.
+ */
+
 //The input DOM element
 var input = $('#command');
 

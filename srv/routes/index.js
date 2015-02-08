@@ -25,6 +25,10 @@ router.get('/chess-room', function(request, response) {
 
 /* POST on the chess room page, currently request contains a command */
 router.post('/chess-room', function(request, response) {
+    /* LAWRENCE'S TEAM'S CODE GOES HERE, ACCESS THIS PAGE WITH
+     * http://www.tlater.net:3597/chess-room
+     * FOR TESTING
+     */
     response.send(request.body);
 });
 
