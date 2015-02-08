@@ -7,12 +7,39 @@ var router = express.Router();
 var lauren = require('chessmate/laurenTest');
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-    console.log(req);
+/* GET home page */
+router.get('/', function(request, response) {
+    response.render('index', { title: 'Express' });
+    console.log(request);
 });
 
+/* GET login page */
+router.get('/login', function(request, response) {
+    response.render('login');
+});
+
+/* GET chess room page */
+router.get('/chess-room', function(request, response) {
+    response.render('chess');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*THESE ARE JUST FOR TESTING*/
 // GET test chat implementation
 router.get('/testChat', function(request, response) {
     response.render('chat.ejs', { title: 'Hello World'});

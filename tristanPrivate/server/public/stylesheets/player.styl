@@ -1,0 +1,49 @@
+fade(speed)
+    -moz-transition: opacity speed ease-in-out
+    -webkit-transition: opacity speed ease-in-out
+    transition: opacity speed ease-in-out
+
+body
+    font-family: Helvetica Neue, Helvetica, sans-serif
+    padding: 1em
+    background-color: #151515
+    color: white
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
+    -webkit-font-smoothing: antialiased
+
+#metaWrapper
+    opacity: 1
+    position: absolute
+    top: 50%
+    left:0
+    width: 100%
+    height: 150px
+    margin-top: -90px
+    fade(.3s)
+
+    text-align: center
+
+#title
+    font-weight: bold
+    font-size: 60px
+
+.playtime
+    display: inline-block
+
+.fade
+    opacity: 0!important
+
+#uiElements
+    height: 20%
+    width: 100%
+    position: fixed
+    bottom: 0
+    left: 0
+
+    &:hover .ui
+        opacity: 1
+        fade(.7s)
+
+.ui
+    opacity: 0
+    fade(.7s)

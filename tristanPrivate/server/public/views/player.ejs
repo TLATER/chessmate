@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/player.css'>
+</head>
+
+<body>
+
+<audio id='stream' src='http://www.tlater.net:8000/mpd.ogg' type='audio/ogg' 
+autoplay>
+</audio>
+
+<% if (!alert) {%>
+<div id='browserWarning' style='cursor: pointer'>
+You are using an unsupported browser. More specifically, a browser that does not
+ support .ogg files. This is largely just Internet Explorer and Safari. If you 
+are not using a mobile device, please make the life of all web developers out 
+there a lot easier and use a modern browser like Chrome of Firefox. Heck, even 
+Opera.
+<br><br>
+There's no reason not to, they support all operating systems and are not 
+slower/larger at all. In fact, they will probably make your browsing experience 
+smoother.
+*Click on this message to hide it.*
+</div>
+<% } %>
+
+<div id='metaWrapper'>
+    <% for(var i=0; i<metadata.length - 3; i++) { %>
+        <div id='<%= metadata[i].id %>'>
+            <%= metadata[i].name %>
+        </div>
+    <% } %>
+    <div id='playtimeWrapper'>
+        <div id='played' class='playtime'></div>
+        <div id='playtimeSeperator'></div>
+        <div id='total' class='playtime'></div>
+    </div>
+</div>
+
+<div id='uiElements'>
+    <div id='volume' class='ui'>
+        Test :)
+    </div>
+</div>
+
+<img id='art' />
+<!--Script section-->
+<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+<script type='text/javascript' src='/javascripts/player/stream.js'></script>
+<!--Script section-->
+</body>
