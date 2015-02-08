@@ -23,8 +23,10 @@ router.get('/chess-room', function(request, response) {
     response.render('chess');
 });
 
-
-
+/* POST on the chess room page, currently request contains a command */
+router.post('/chess-room', function(request, response) {
+    response.send(request.body);
+});
 
 
 
