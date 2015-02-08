@@ -3,11 +3,10 @@ var input = $('#command');
 
 //If enter is pressed in the input element, send the command
 input.keypress(function(event) {
-    console.log(event);
-
+    if (event.keyIdentifier === "Enter") {
+        sendCommand();
+    }
 });
-    //if (event.keyIdentifier === "Enter") {
-    //}
 
 //When the send-button is clicked, send the command
 $('#command-send-button').click(function() {
