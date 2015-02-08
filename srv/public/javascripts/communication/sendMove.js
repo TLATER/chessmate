@@ -3,9 +3,9 @@ var input = $('#command');
 
 //If enter is pressed in the input element, send the command
 input.onkeypress = function(event) {
-    if (event.keyIdentifier === "Enter") {
-        console.log('Test');
-    }
+    //if (event.keyIdentifier === "Enter") {
+    console.log(event);
+    //}
 };
 
 //When the send-button is clicked, send the command
