@@ -29,7 +29,7 @@ router.post('/chess-room', function(request, response) {
      * http://www.tlater.net:3597/chess-room
      * FOR TESTING
      */
-    response.send(request);
+    response.send(request.body);
 });
 
 
