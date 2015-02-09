@@ -31,7 +31,6 @@ router.post('/chess-room', function(request, response) {
      * http://www.tlater.net:3597/chess-room
      * FOR TESTING
      */
-    server.receive(request, response);
     response.send(request.body);
 });
 
