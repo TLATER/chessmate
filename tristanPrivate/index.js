@@ -1,32 +1,56 @@
 /*
- * Keeps track of all connected clients and passes data to each whenever new
- * data is available.
+ * Works as a system bus for all modules.
  *
- * On call data is sent to the client for initialization.
+ * @exports: mpdOnline, the constructor of the server
+ *
+ * @public: registerClient, takes a response stream and initializes
+ *          client handling for that client.
  */
 
-var metaCalc = require('metaCalc');
-var mpdListener = require('mpdListener');
+//var metaCalc = require('metaCalc');
+var mpdConnections = require('mpdConnections');
 var clientPasser = require('clientPasser');
 
-//Create a calculator for metadata
-var calc = new metaCalc();
+//Constructor
+function mpdOnline() {
+    //Creates a new mpd client
+    var mpc = new mpdConnections();
 
-//Holds all clients
-var clients = [];
+    //Holds all currently conencted clients
+    var clients = [];
 
-//If something happens on the mpd server data is sent to the client
-mpdListener.stdout.on('data', function() {
-    clients.forEach(function(client) {
-        client.sendData(calc);
+    //Adds new client to array
+    this.clientsPush = function(client) {
+        clients.push(client);
+    };
+
+    //Sends new metadata to all connected clients
+    function broadcastSong(metadata) {
+        clients.forEach(function(client) {
+            client.sendSong(metadata);
+        });
+    }
+
+    //Send song to specific client
+    this.sendSong = function(client) {
+        mpc.querySong(false);
+        mpc.once('sendSong', function(metadata) {
+            client.sendSong(metadata);
+        });
+    };
+
+    //If we receive information send it to all clients
+    mpc.on('broadcastSong', function(metadata) {
+        broadcastSong(metadata);
     });
-});
-
-//Register client and send first block of data
-function registerClient(response) {
-    var newClientPasser = new clientPasser(response, calc);
-    clients.push(newClientPasser);
-    newClientPasser.sendData(calc);
 }
 
-module.exports = registerClient;
+//Registers a new client and sends first song information
+mpdOnline.prototype.registerClient = function(response) {
+    response.write('data:Test\n\n');
+    var newClient = new clientPasser(response);
+    this.clientsPush(newClient);
+    this.sendSong(newClient);
+};
+
+module.exports = mpdOnline;
