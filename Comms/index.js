@@ -1,8 +1,12 @@
 var uiInteraction = require('uiInteraction');
 
-function server(request, response) {
+function server() {
     //{ something:something }
     var object = new uiInteraction(request, response);
 }
 
-var srv = new server(request, response);
+server.prototype.receive = function(request, response) {
+
+};
+
+module.exports = server;

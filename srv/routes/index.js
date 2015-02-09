@@ -6,6 +6,8 @@ var chat = require('chessmate/testChat');
 var router = express.Router();
 var lauren = require('chessmate/laurenTest');
 
+var srv = require('Comms');
+var server = new srv();
 
 /* GET home page */
 router.get('/', function(request, response) {
@@ -29,8 +31,16 @@ router.post('/chess-room', function(request, response) {
      * http://www.tlater.net:3597/chess-room
      * FOR TESTING
      */
+    server.receive(request, response);
     response.send(request.body);
 });
+
+
+
+
+
+
+
 
 
 
