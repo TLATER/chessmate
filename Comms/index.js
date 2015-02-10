@@ -1,5 +1,5 @@
 // The 'glue' file. Holds all communications together
-var uiCommunication() = require('uiCommunication');
+var uiCommunication = require('uiCommunication');
 
 function server() {
     //{ something:something }
