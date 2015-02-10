@@ -6,8 +6,10 @@ var chat = require('chessmate/testChat');
 var router = express.Router();
 var lauren = require('chessmate/laurenTest');
 
-var srv = require('chessmate/Comms');
-var server = new srv();
+/* Be careful activating these, they might crash the server and you won't get
+   errors ATM. I need to fix that */
+//var srv = require('chessmate/Comms');
+//var server = new srv();
 
 /* GET home page */
 router.get('/', function(request, response) {
