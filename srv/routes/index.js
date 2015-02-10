@@ -6,7 +6,7 @@ var chat = require('chessmate/testChat');
 var router = express.Router();
 var lauren = require('chessmate/laurenTest');
 
-var srv = require('Comms');
+var srv = require('chessmate/Comms');
 var server = new srv();
 
 /* GET home page */
