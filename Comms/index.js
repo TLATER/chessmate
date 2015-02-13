@@ -11,7 +11,6 @@ server.prototype.receive = function(request) {
 
 server.prototype.register = function(response) {
     uiComms.registerClient(response);
-    response.write('data:Another Test\n\n');
 };
 
 var serv = new server();
