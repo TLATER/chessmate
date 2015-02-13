@@ -36,7 +36,7 @@ router.post('/chess-room', function(request, response) {
     srv.receive(request);
 
 
-    response.send(request.body);
+//    response.send(request.body);
 });
 
 /* EventSource requests from clients */
