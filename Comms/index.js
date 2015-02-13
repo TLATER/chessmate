@@ -3,8 +3,8 @@ var Bus = require('systemBus');
 var uiComms = require('uiCommunication');
 
 function server() {
-    Bus.on('receivedMove', function() {
-        uiComms.broadcast('Test');
+    Bus.on('receivedMove', function(command) {
+        uiComms.broadcast(command);
     });
 }
 
