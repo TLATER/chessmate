@@ -10,7 +10,7 @@ server.prototype.receive = function(request) {
 };
 
 server.prototype.register = function(response) {
-    uiComms.registerClient(response);
+    //uiComms.registerClient(response);
 };
 
 var serv = new server();
