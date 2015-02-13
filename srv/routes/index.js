@@ -52,7 +52,7 @@ router.get('/chess-room/users', function(request, response) {
     response.write('\n');
 
     //Register this with the communication system
-    //srv.register(response);
+    srv.register(response);
 
     response.write('id:' + Date.now() + '\n\n');
     response.write('data:Test\n\n');
