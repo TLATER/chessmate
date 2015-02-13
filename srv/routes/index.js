@@ -8,8 +8,7 @@ var lauren = require('chessmate/laurenTest');
 
 /* Be careful activating these, they might crash the server and you won't get
    errors ATM. I need to fix that */
-//var srv = require('chessmate/Comms');
-//var server = new srv();
+var srv = require('chessmate/Comms');
 
 /* GET home page */
 router.get('/', function(request, response) {
@@ -33,11 +32,26 @@ router.post('/chess-room', function(request, response) {
      * http://www.tlater.net:3597/chess-room
      * FOR TESTING
      */
+
+    srv.receive(request);
+
+
     response.send(request.body);
 });
 
+/* EventSource requests from clients */
+router.get('/chess-room/users', function(request, response) {
+    //Make an event stream
+    response.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+    });
+    response.write('\n');
 
-
+    //Register this with the communication system
+    srv.register(response);
+});
 
 
 
