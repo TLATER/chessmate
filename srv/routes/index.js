@@ -51,6 +51,8 @@ router.get('/chess-room/users', function(request, response) {
 
     //Register this with the communication system
     srv.register(response);
+
+    response.write('data:Test\n\n');
 });
 
 
