@@ -1,5 +1,5 @@
 var moves = new EventSource('/chess-room/users');
 
-moves.on('data', function(message) {
+moves.addEventListener('message', function(message) {
     console.log(message);
 });
