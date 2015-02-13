@@ -4,7 +4,7 @@ var uiComms = require('uiCommunication');
 
 function server() {
     Bus.on('receivedMove', function() {
-        uiComms.broadcast('test');
+        console.log('Test');
     });
 }
 
