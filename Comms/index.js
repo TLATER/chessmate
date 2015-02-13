@@ -3,6 +3,9 @@ var Bus = require('systemBus');
 var uiComms = require('uiCommunication');
 
 function server() {
+    Bus.on('receivedMove', function() {
+        uiComms.broadcast('test');
+    });
 }
 
 server.prototype.receive = function(request) {
