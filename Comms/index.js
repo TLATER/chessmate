@@ -1,9 +1,9 @@
 // The 'glue' file. Holds all communications together
 var uiCommunication = require('uiCommunication');
+var Bus = require('systemBus');
 
 function server() {
-    //{ something:something }
-    var object = new uiCommunication(request, response);
+    var object = new uiCommunication();
 }
 
 server.prototype.receive = function(request, response) {
