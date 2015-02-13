@@ -54,7 +54,7 @@ router.get('/chess-room/users', function(request, response) {
     //Register this with the communication system
     //srv.register(response);
 
-    response.write('id:0\n');
+    response.write('id:' + Date.now() + '\n\n');
     response.write('data:Test\n\n');
 });
 
