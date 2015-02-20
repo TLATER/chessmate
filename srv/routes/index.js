@@ -19,7 +19,7 @@ router.post('/chess-room', function(request, response) {
 
 /* EventSource requests from clients */
 router.get('/chess-room/users', function(request, response) {
-    request.socket.setTimeout(Infinity);
+    //request.socket.setTimeout(Infinity);
 
     //Make an event stream
     response.writeHead(200, {
