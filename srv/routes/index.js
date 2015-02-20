@@ -35,11 +35,11 @@ router.get('/chess-room/users', function(request, response) {
 //     response.write('data:Test\n\n');
 });
 
-router.io.route('ready', function(req) {
-    req.io.emit('talk', {
+/*router.io.route('ready', function(req) {
+    //req.io.emit('talk', {
         message: 'io event from an io route on the server'
-    })
-})
+    });
+});*/
 
 router.get('/', function(request, response) {
     response.render('main');
