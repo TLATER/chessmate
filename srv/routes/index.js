@@ -5,21 +5,7 @@ var express = require('express');
 var chat = require('chessmate/testChat');
 var router = express.Router();
 var lauren = require('chessmate/laurenTest');
-
-/* Be careful activating these, they might crash the server and you won't get
-   errors ATM. I need to fix that */
 var srv = require('chessmate/Comms');
-
-/* GET home page */
-router.get('/', function(request, response) {
-    response.render('index', { title: 'Express' });
-    console.log(request);
-});
-
-/* GET login page */
-router.get('/login', function(request, response) {
-    response.render('login');
-});
 
 /* GET chess room page */
 router.get('/chess-room', function(request, response) {
@@ -28,15 +14,7 @@ router.get('/chess-room', function(request, response) {
 
 /* POST on the chess room page, currently request contains a command */
 router.post('/chess-room', function(request, response) {
-    /* LAWRENCE'S TEAM'S CODE GOES HERE, ACCESS THIS PAGE WITH
-     * http://www.tlater.net:3597/chess-room
-     * FOR TESTING
-     */
-
     srv.receive(request);
-
-
-//    response.send(request.body);
 });
 
 /* EventSource requests from clients */
@@ -57,6 +35,13 @@ router.get('/chess-room/users', function(request, response) {
     response.write('id:' + Date.now() + '\n\n');
     response.write('data:Test\n\n');
 });
+
+
+
+
+
+
+
 
 
 
