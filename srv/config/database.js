@@ -1,3 +1,3 @@
 module.exports = {
-    'url' : 'www.tlater.net:3597'  
+    'url' : 'db:http://localhost:27017'  
 };
