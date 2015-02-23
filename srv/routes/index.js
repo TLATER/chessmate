@@ -29,7 +29,7 @@ router.get('/lauren', function(request, response) {
 });
 
 router.get('/socketTest', function(request, response) {
-    response.render('socketTest.ejs');
+    response.render('socket/socketTest.ejs');
 });
 
 
