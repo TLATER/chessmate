@@ -8,6 +8,7 @@ function server() {
     });
 }
 
+// 
 server.prototype.receive = function(request) {
     Bus.emit('receivedMove', request.body);
 };
@@ -15,6 +16,8 @@ server.prototype.receive = function(request) {
 server.prototype.register = function(response) {
     uiComms.registerClient(response);
 };
+
+
 
 var serv = new server();
 
