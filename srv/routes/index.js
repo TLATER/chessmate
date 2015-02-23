@@ -50,7 +50,7 @@ router.get('/lauren', function(request, response) {
     
     var date = new Date();
     
-    response.render('lauren.ejs', { title: 'laurenTest', date: date });
+    response.render('lauren.ejs', { title: 'Chessmate'});
 });
 
 
