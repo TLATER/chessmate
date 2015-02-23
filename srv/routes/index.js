@@ -8,7 +8,7 @@ var lauren = require('chessmate/laurenTest');
 var srv = require('chessmate/Comms');
 /* GET chess room page */
 router.get('/chess-room', function(request, response) {
-    response.render('chess');
+    response.render('chess', { name: 'lauren' });
 });
 
 /* POST on the chess room page, currently request contains a command */
@@ -45,11 +45,13 @@ router.get('/', function(request, response) {
     response.render('main');
 });
 
-
-
-
-
-
+//Lauren's design test implementation. Use this if you want to fiddle
+router.get('/lauren', function(request, response) {
+    
+    var date = new Date();
+    
+    response.render('lauren.ejs', { title: 'laurenTest', date: date });
+});
 
 
 
@@ -95,11 +97,6 @@ router.post('/testChat', function(request, response) {
 
 /*Most basic webapp implementation. Read all the code that is referenced within
   these if you need to learn*/
-
-//Lauren's mongooseDB test implementation. Use this if you want to fiddle
-router.get('/lauren', function(request, response) {
-    response.render('lauren.ejs', { title: 'laurenTest' });
-});
 
 //Lauren's mongooseDB test webapp. Use this if you want to fiddle
 router.post('/lauren', function(request, response) {
