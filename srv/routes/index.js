@@ -16,31 +16,6 @@ router.post('/chess-room', function(request, response) {
     srv.receive(request);
 });
 
-/* EventSource requests from clients */
-router.get('/chess-room/users', function(request, response) {
-//     //request.socket.setTimeout(Infinity);
-
-//     //Make an event stream
-//     response.writeHead(200, {
-//         'Content-Type': 'text/event-stream',
-//         'Cache-Control': 'no-cache',
-//         'Connection': 'keep-alive'
-//     });
-//     response.write('\n');
-
-//     //Register this with the communication system
-//     srv.register(response);
-
-//     response.write('id:' + Date.now() + '\n\n');
-//     response.write('data:Test\n\n');
-});
-
-/*router.io.route('ready', function(req) {
-    //req.io.emit('talk', {
-        message: 'io event from an io route on the server'
-    });
-});*/
-
 router.get('/', function(request, response) {
     response.render('main');
 });
@@ -52,6 +27,21 @@ router.get('/lauren', function(request, response) {
     
     response.render('lauren.ejs', { title: 'Chessmate'});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
