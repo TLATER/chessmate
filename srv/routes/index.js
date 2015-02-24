@@ -17,7 +17,7 @@ router.post('/chess-room', function(request, response) {
 });
 
 router.get('/', function(request, response) {
-    response.render('main');
+    response.render('index.ejs');
 });
 
 //Lauren's design test implementation. Use this if you want to fiddle
