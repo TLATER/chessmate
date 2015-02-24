@@ -13,6 +13,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var io = require('socket.io').listen(app);
 
 var configDB = require('./config/database.js');
 // configuration ===============================================================
@@ -39,6 +40,12 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use('/', routes);
 app.use('/users', users);
+
+// Socket implementation goes hier
+io.sockets.on('connection', function(socket) {
+    console.log('I did it!');
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
