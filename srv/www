@@ -10,14 +10,6 @@ var http = require('http');
 var io = require('socket.io')(http);
 
 /**
- * Socket.io configuration
- */
-
-io.on('connection', function(socket) {
-  console.log('I did it!');
-});
-
-/**
  * Get port from environment and store in Express.
  */
 
@@ -37,6 +29,14 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+/**
+ * Socket.io configuration
+ */
+
+io.on('connection', function(socket) {
+  console.log('I did it!');
+});
 
 /**
  * Normalize a port into a number, string, or false.
