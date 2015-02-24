@@ -19,10 +19,13 @@ body
 
 // A standard style for a container with rounded edges
 .roundedContainer
-    position relative
+    position fixed
     min-height 100px
     border-radius .5em
     box-shadow 2px 2px 6px gray
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
 
 // A standard style for a raised button
 .raisedButton
