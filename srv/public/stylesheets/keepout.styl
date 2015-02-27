@@ -19,14 +19,15 @@ header-height = 50px
     clear both
 
 board-width = 40%
-board-min-length = 400px
-boardCell-length = 12.5%
-boardCell-min-length = 50px
+board-min-width = 400px
+boardCell-width = 12.5%
+boardCell-min-width = 50px
 
 #board
     float left
     clear both
-    width 40%
+    width board-width
+    
     border 1px solid #000
     display table
 
@@ -42,15 +43,12 @@ div.stretchy-wrapper > div
     left 0
     right 0
 
-
 .boardRow
     display table-row
 
 .boardCell
-    width boardCell-length
-    min-width boardCell-min-length
-    height boardCell-min-length
-    min-height boardCell-min-length
+    width boardCell-width
+    min-width boardCell-min-width
     display table-cell
     
 chat-width = 40%
