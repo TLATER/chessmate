@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><Chessmate></title>
     <% include partials/head %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
     <div id= 'board'>
       <% for (var i = 0; i < 8; i++) { %>
         <div class='boardRow'>
           <% for (var j = 0; j < 8; j++) { %>
-<!--            <div class=<% 'boardCell ' + j % 2 ? 0 ></div> -->
+            <div class=<% 'boardCell ' + j % 2 ? 0 >></div> 
           <% } %>
         </div>
       <% } %>
