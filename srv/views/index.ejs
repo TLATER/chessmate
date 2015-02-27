@@ -3,8 +3,12 @@
   <head>
     <title><Chessmate></title>
     <% include partials/head %>
+    <link rel="stylesheet" href="/stylesheets/keepout.css"></link>
   </head>
   <body>
+            <div id='loginButton' class='loginScreenButton raisedButton'>
+                Login
+            </div>
     <div id= 'board'>
       <% for (var i = 0; i < 8; i++) { %>
         <div class='boardRow'>
