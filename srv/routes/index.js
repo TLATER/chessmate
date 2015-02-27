@@ -21,8 +21,11 @@ router.get('/', function(request, response) {
 });
 
 //Lauren's design test implementation. Use this if you want to fiddle
-router.get('/login', function(request, response) {
-    response.render('login.ejs', { title: 'Chessmate'});
+router.get('/lauren', function(request, response) {
+
+    var date = new Date();
+
+    response.render('lauren.ejs', { title: 'Chessmate'});
 });
 
 router.get('/socketTest', function(request, response) {
