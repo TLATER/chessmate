@@ -20,6 +20,8 @@ body
 #container1
 #board
 #chatbox
+#topscore
+#bottomscore
     position relative
 
 #container2
@@ -85,11 +87,17 @@ boardCell-min-width = 40px
     padding 0
     width board-width
     min-width board-min-width
-    background #000
-    color #fff
-    position relative
     font-size 12px
-    border-left 1px solid #000
+
+#topscore
+    background #666
+    color #fff
+    border-left 1px solid #666
+    
+#bottomscore
+    background #eee
+    color #000
+    border-left 1px solid #eee
 
 .clear
     clear both
