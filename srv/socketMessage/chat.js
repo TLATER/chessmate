@@ -1,6 +1,6 @@
 var messages = document.getElementById('messages');
 var sendButton = document.getElementById('m');
-var socket = io.connect('https://projecttests-laweks.c9.io');
+var socket = io.connect('http://www.tlater.net/socketTest');
 
 window.onload = function() {
     
