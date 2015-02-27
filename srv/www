@@ -34,7 +34,7 @@ var io = require('socket.io').listen(server);
 /**
  * Socket.io configuration
  */
-app.use(express.static(__dirname + '/socketMessage')); 
+app.use(app.static(__dirname + '/socketMessage')); 
 io.on('connection', function(socket) {
   console.log('I did it!');
 });
