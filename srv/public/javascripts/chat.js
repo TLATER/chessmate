@@ -1,10 +1,9 @@
-var messages = [];
-var m = document.getElementById('m');
-var sendButton = document.getElementById('sendButton');
-var socket = io.connect('http://www.tlater.net');
-var content = document.getElementById('messages');
+window.onload = function() {var messages = [];
 
-window.onload = function() {
+    var m = document.getElementById('m');
+    var sendButton = document.getElementById('sendButton');
+    var socket = io.connect('http://www.tlater.net');
+    var content = document.getElementById('messages');
     
         socket.on('message', function (data) {
         alert(data);
