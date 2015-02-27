@@ -2,7 +2,7 @@ window.onload = function() {var messages = [];
 
     var m = document.getElementById('m');
     var sendButton = document.getElementById('sendButton');
-    var socket = io.connect('http://www.tlater.net');
+    var socket = io.connect('http://www.tlater.net:3597');
     var content = document.getElementById('messages');
     
         socket.on('message', function (data) {
