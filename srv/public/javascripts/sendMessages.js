@@ -41,3 +41,10 @@ function escapeHtml(text) {
 
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
+
+function reconstruct(text) {
+    var map = {
+        '&amp;': '&',
+        '#lt;': '<'
+    }
+}
