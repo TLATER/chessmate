@@ -50,3 +50,24 @@ body
     &:active
         background-color darken(@background-color, 15%)
         box-shadow 3px 3px 6px gray
+        
+        
+// A standard style for an accent action button
+.actionButton
+    min-width 88px
+    height 36px
+    line-height 36px
+    text-align center
+    margin 1px
+
+    color rgba(255, 255, 255, .87)
+    background-color accent-color
+    font-weight bold
+
+    transition all .1s
+    cursor pointer
+    box-shadow 1px 1px 3px gray
+
+    &:active
+        background-color darken(@background-color, 15%)
+        box-shadow 3px 3px 6px gray
