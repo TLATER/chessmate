@@ -34,9 +34,16 @@ var io = require('socket.io').listen(server);
 /**
  * Socket.io configuration
  */
-
+app.use(express.static(__dirname + '/socketMessage')); 
 io.on('connection', function(socket) {
   console.log('I did it!');
+});
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('message', { message: 'welcome to the chat' });
+    socket.on('send', function (data) {
+        io.sockets.emit('message', data);
+    });
 });
 
 /**
