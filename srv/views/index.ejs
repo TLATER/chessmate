@@ -6,25 +6,24 @@
     <link rel="stylesheet" href="/stylesheets/keepout.css"></link>
   </head>
   <body>
-            <div id='loginButton' class='loginScreenButton raisedButton'>
-                Login
-            </div>
-    <div id= 'board'>
-      <% for (var i = 0; i < 8; i++) { %>
-        <div class='boardRow'>
-          <% for (var j = 0; j < 8; j++) { %>
-          <% } %>
-        </div>
-      <% } %>
-    </div>
-      
-    <div id= 'chat'>
-      <div id= 'speech'>
-        
+    <div id= 'container'>
+      <div id= 'board'>
+        <% for (var i = 0; i < 8; i++) { %>
+          <div class='boardRow'>
+            <% for (var j = 0; j < 8; j++) { %>
+            <% } %>
+          </div>
+        <% } %>
       </div>
-      <div id= 'input'>
-        <div id= 'actionButton'>
+      
+      <div id= 'chat'>
+        <div id= 'speech'>
+        
+        </div>
+        <div id= 'input'>
+          <div id= 'actionButton'>
           Send
+          </div>
         </div>
       </div>
     </div>
