@@ -9,32 +9,36 @@
   <body>
     <div id= 'header'></div>
     <div id= 'container'>
-      <div id= 'board'>
-        <div class= 'stretchy-wrapper'>
-          <div>
-            <% for (var i = 0; i < 8; i++) { %>
-              <div class='boardRow'>
-                <% for (var j = 0; j < 8; j++) { %>
-                <div class='boardCell'>
-                  <div class= 'stretchy-wrapper'>
-                    <div></div>
-                  </div>
+      <div id= 'container2'>
+        <div id= 'container1'>
+          <div id= 'board'>
+            <div class= 'stretchy-wrapper'>
+              <div>
+                <% for (var i = 0; i < 8; i++) { %>
+                  <div class='boardRow'>
+                    <% for (var j = 0; j < 8; j++) { %>
+                    <div class='boardCell'>
+                      <div class= 'stretchy-wrapper'>
+                        <div></div>
+                      </div>
+                    </div>
+                  <% } %>
                 </div>
-                <% } %>
-              </div>
-            <% } %>
+              <% } %>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div id= 'chatbox'>
-        <div id= 'messages'>
+       
+        <div id= 'chatbox'>
+          <div id= 'messages'>
         
-        </div>
-        <div id= 'input'>
-          <input id= 'inputBox' type="text" name="inputBox" value="Enter a message">
-          <div id= 'actionButton' class='raisedButton'>
-            Send
+          </div>
+          <div id= 'input'>
+            <input id= 'inputBox' type="text" name="inputBox" value="Enter a message">
+              <div id= 'actionButton' class='raisedButton'>
+                Send
+              </div>
+            </div>
           </div>
         </div>
       </div>
