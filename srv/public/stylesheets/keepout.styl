@@ -4,30 +4,40 @@ accent-color = #ffe57f
 header-height = 50px
 
 #header
+#container
+#messages
+    clear both
+
+#container2
+#container1
+#board
+#chatbox
+    position relative
+
+#container2
+#container1
+    float left
+    width 100%
+
+#container2
+#board
+#chatbox
+    overflow hidden
+
+#header
     background-color base-color
     width 100%
     height header-height
     margin 0
     padding 0
-    clear both
 
 #container
     width 96%
     max-width 1200px
     margin 16px auto
     top header-height
-    clear both
-
-#container2
-    float left
-    width 100%
-    overflow hidden
-    position relative
 
 #container1
-    float left
-    width 100%
-    position relative
     right 50%
 
 board-width = 48%
@@ -38,8 +48,6 @@ boardCell-min-width = 40px
 #board
     float left
     left 51%
-    position relative
-    overflow hidden
     margin 0
     padding 0
     width board-width
@@ -73,8 +81,6 @@ chat-min-width = 320px
 #chatbox
     float left
     left 53%
-    position relative
-    overflow hidden
     margin 0
     padding 0
     width chat-width
@@ -89,7 +95,6 @@ messages-height = 100% - 30px
     width 94%
     height 80%
     margin 3%
-    clear both
     position absolute
 
 #input
