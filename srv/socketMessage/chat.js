@@ -22,7 +22,7 @@ window.onload = function() {
     {
  
         sendButton.onclick = function() {
-            var text = field.value;
+            var text = sendButton.value;
             socket.emit('send', { message: text, username: name.value });
         };
     }
