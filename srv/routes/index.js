@@ -21,11 +21,9 @@ router.get('/', function(request, response) {
 });
 
 //Lauren's design test implementation. Use this if you want to fiddle
-router.get('/lauren', function(request, response) {
+router.get('/login', function(request, response) {
 
-    var date = new Date();
-
-    response.render('lauren.ejs', { title: 'Chessmate'});
+    response.render('login.ejs', { title: 'Chessmate'});
 });
 
 router.get('/socketTest', function(request, response) {
@@ -83,16 +81,6 @@ router.get('/testChat/messageDistribute', function(request, response) {
 //If testChat receives a message send to all clients
 router.post('/testChat', function(request, response) {
     chat.receive(request, response);
-});
-
-/*Most basic webapp implementation. Read all the code that is referenced within
-  these if you need to learn*/
-
-//Lauren's mongooseDB test webapp. Use this if you want to fiddle
-router.post('/lauren', function(request, response) {
-    var webapp = new lauren(request, response);
-
-    webapp.respond();
 });
 
 //Lawrence's test implementation
