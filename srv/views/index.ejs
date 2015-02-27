@@ -10,13 +10,17 @@
     <div id= 'header'></div>
     <div id= 'container'>
       <div id= 'board'>
-        <% for (var i = 0; i < 8; i++) { %>
-          <div class='boardRow'>
-            <% for (var j = 0; j < 8; j++) { %>
-            <div class='boardCell'></div>
+        <div class= 'stretchy-wrapper'>
+          <div>
+            <% for (var i = 0; i < 8; i++) { %>
+              <div class='boardRow'>
+                <% for (var j = 0; j < 8; j++) { %>
+                <div class='boardCell'></div>
+                <% } %>
+              </div>
             <% } %>
           </div>
-        <% } %>
+        </div>
       </div>
       
       <div id= 'chatbox'>
