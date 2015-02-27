@@ -1,4 +1,4 @@
-var messages = document.getElementById('messages');
+var messages = [];
 var sendButton = document.getElementById('m');
 var socket = io.connect('http://www.tlater.net');
 var content = document.getElementById('messages');
