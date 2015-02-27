@@ -1,5 +1,5 @@
 var messages = document.getElementById('messages');
-
+var sendButton = document.getElementById('m');
 
 window.onload = function() {
     
