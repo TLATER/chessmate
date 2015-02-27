@@ -9,14 +9,14 @@
     <p>Welcome to <%= title %></p>
     <div id= 'board'>
       <% for (var i = 0; i < 8; i++) { %>
-        <div class = 'boardRow'>
+        <div class='boardRow'>
           <% for (var j = 0; j < 8; j++) { %>
-            <div class = 'boardCell'></div>
+            <div class=<% 'boardCell ' + j % 2 ? 0 ></div>
           <% } %>
         </div>
       <% } %>
     </div>
-      yes is is!!
+      
     <div id= 'chat'>
       Chat
     </div>
