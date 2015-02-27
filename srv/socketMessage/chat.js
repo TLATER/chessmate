@@ -1,3 +1,6 @@
+var messages = document.getElementById('messages');
+
+
 window.onload = function() {
     
         socket.on('message', function (data) {
@@ -27,4 +30,4 @@ window.onload = function() {
     }
     catch (error) {console.log(error)}
  
-}
+};
