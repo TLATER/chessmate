@@ -2,62 +2,8 @@
 <html>
   <head>
     <title><%= title%></title>
-    <% include partials/head %>
-    <link rel="stylesheet" href="/stylesheets/homepage.css"></link>
   </head>
   <body>
-    <div id= 'header'></div>
-    <div class= 'clear'></div>
-    <div id= 'container'>
-      <div id= 'container2'>
-        <div id= 'scorestriptop'>
-          <div id= 'topscore'>
-            <div class= 'spanLeft' style='color: #fff'>black</div>
-            <div class= 'spanRight' style='color: #fff'>time: 00:00</div>
-          </div>
-        </div>
-        <div id= 'container1'>
-          <div id= 'board'>
-            <div class= 'stretchy-wrapper'>
-              <div>
-                <% for (var i = 0; i < 8; i++) { %>
-                  <div class='boardRow'>
-                    <% for (var j = 0; j < 8; j++) { %>
-                    <div class='boardCell'>
-                      <div class= 'stretchy-wrapper'>
-                        <div></div>
-                      </div>
-                    </div>
-                  <% } %>
-                </div>
-              <% } %>
-            </div>
-          </div>
-        </div>
-       
-        <div id= 'chatbox'>
-          <div class= 'stretchy-wrapper'>
-            <div>
-              <div id= 'messages'>
-            
-              </div>
-              <div id= 'input'>
-                <input id= 'inputBox' type="text" name="inputBox" value="&nbsp;Enter a message">
-                  <div id= 'actionButton' class='raisedButton'>
-                        Send
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id= 'scorestripbottom'>
-            <div id= 'bottomscore'>
-              <div class= 'spanLeft'>white</div>
-              <div class= 'spanRight'>time: 00:00</div>
-            </div>
-          </div>
-      </div>
-    </div>
+    test
   </body>
 </html>
