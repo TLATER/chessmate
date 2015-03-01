@@ -1,0 +1,56 @@
+body {
+  background-color: #fff;
+}
+* {
+  font-family: 'Roboto', sans-serif;
+  color: #000;
+}
+.roundedContainer {
+  position: fixed;
+  min-height: 100px;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  border-radius: 0.5em;
+  box-shadow: 2px 2px 6px #808080;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+.raisedButton {
+  min-width: 88px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  margin: 1px;
+  color: rgba(255,255,255,0.87);
+  background-color: #9c27b0;
+  font-weight: bold;
+  -moz-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #808080;
+}
+.raisedButton:active {
+  background-color: #852196;
+  box-shadow: 3px 3px 6px #808080;
+}
+#actionButton {
+  min-width: 88px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  margin: 1px;
+  color: rgba(255,255,255,0.87);
+  background-color: #ffe57f;
+  font-weight: bold;
+  -moz-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #808080;
+}
+#actionButton:active {
+  background-color: #ffd946;
+  box-shadow: 3px 3px 6px #808080;
+}

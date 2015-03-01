@@ -1,0 +1,176 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  background: #eee;
+  height: 100%;
+}
+#header,
+#container,
+#messages {
+  clear: both;
+}
+#container2,
+#container1,
+#board,
+#chatbox,
+#topscore,
+#bottomscore {
+  position: relative;
+}
+#container2,
+#container1 {
+  float: left;
+  width: 100%;
+}
+#container2,
+#board,
+#chatbox {
+  overflow: hidden;
+}
+#header {
+  background-color: #9c27b0;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: relative;
+}
+#container {
+  width: 96%;
+  max-width: 1200px;
+  height: 90%;
+  margin: 0 auto;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 0px 0px 6px 6px;
+  -moz-border-radius: 0px 0px 6px 6px;
+  -webkit-border-radius: 0px 0px 6px 6px;
+  border: 1px solid #ddd;
+  z-index: -1;
+  position: absolute;
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(238,238,238,0.6);
+  -moz-box-shadow: 1px 1px 2px 0px rgba(238,238,238,0.6);
+  box-shadow: 1px 1px 2px 0px rgba(238,238,238,0.6);
+}
+#container2 {
+  top: 5px;
+}
+#container1 {
+  right: 50%;
+}
+#scorestriptop,
+#scorestripbottom {
+  width: 100%;
+  height: 30px;
+  float: left;
+  top: 0;
+  position: relative;
+}
+#scorestriptop {
+  background: #333;
+}
+#scorestripbottom {
+  background: #eee;
+}
+#topscore,
+#bottomscore {
+  height: 30px;
+  line-height: 30px;
+  float: left;
+  margin: 0 0 0 2%;
+  padding: 0;
+  width: 46%;
+  min-width: 320px;
+  font-size: 12px;
+}
+#topscore {
+  color: #fff;
+}
+#bottomscore {
+  color: #000;
+}
+.spanLeft {
+  float: left;
+  margin-left: 2px;
+}
+.spanRight {
+  float: right;
+  margin-right: 2px;
+}
+.clear {
+  clear: both;
+}
+#board {
+  float: left;
+  left: 52%;
+  margin: 0;
+  padding: 0;
+  width: 46%;
+  min-width: 320px;
+  border: 1px solid #ccc;
+  display: table;
+}
+div.stretchy-wrapper {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+div.stretchy-wrapper > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.boardRow {
+  display: table-row;
+}
+.boardCell {
+  width: 12.5%;
+  min-width: 40px;
+  display: table-cell;
+}
+#chatbox {
+  float: left;
+  left: 55%;
+  margin: 0;
+  padding: 0;
+  width: 46%;
+  min-width: 320px;
+  height: 100%;
+  min-height: 320px;
+  border: 1px solid #ccc;
+}
+#messages {
+  width: 94%;
+  height: 80%;
+  margin: 3%;
+  position: absolute;
+}
+#input {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 36px;
+  line-height: 36px;
+  border-top: 1px solid #ccc;
+}
+#inputBox {
+  height: 30px;
+  width: 70%;
+  float: left;
+  border: 0;
+}
+#actionButton {
+  float: right;
+}

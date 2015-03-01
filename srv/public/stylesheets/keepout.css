@@ -1,0 +1,101 @@
+#header,
+#container,
+#messages {
+  clear: both;
+}
+#container2,
+#container1,
+#board,
+#chatbox {
+  position: relative;
+}
+#container2,
+#container1 {
+  float: left;
+  width: 100%;
+}
+#container2,
+#board,
+#chatbox {
+  overflow: hidden;
+}
+#header {
+  background-color: #9c27b0;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+#container {
+  width: 96%;
+  max-width: 1200px;
+  margin: 16px auto;
+  top: 50px;
+}
+#container1 {
+  right: 50%;
+}
+#board {
+  float: left;
+  left: 51%;
+  margin: 0;
+  padding: 0;
+  width: 48%;
+  min-width: 320px;
+  border: 1px solid #ccc;
+  display: table;
+}
+div.stretchy-wrapper {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+div.stretchy-wrapper > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.boardRow {
+  display: table-row;
+}
+.boardCell {
+  width: 12.5%;
+  min-width: 40px;
+  display: table-cell;
+}
+#chatbox {
+  float: left;
+  left: 53%;
+  margin: 0;
+  padding: 0;
+  width: 48%;
+  min-width: 320px;
+  height: 100%;
+  min-height: 320px;
+  border: 1px solid #ccc;
+}
+#messages {
+  width: 94%;
+  height: 80%;
+  margin: 3%;
+  position: absolute;
+}
+#input {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 36px;
+  line-height: 36px;
+  border-top: 1px solid #ccc;
+}
+#inputBox {
+  height: 30px;
+  width: 70%;
+  float: left;
+  border: 0;
+}
+#actionButton {
+  float: right;
+}
