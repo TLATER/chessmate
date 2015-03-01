@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 // The port we are listening on
-var port = '3501';
+var port = process.env.PORT ? process.env.PORT : '3000';
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var mongoose = require('mongoose');
@@ -34,6 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+/* Make the public and routes link to the root directory */
 app.use('/', routes);
 app.use(express.static(__dirname + '/srv/public'));
 
@@ -53,6 +54,7 @@ app.use(function(err, request, response, next) {
     });
 });
 
+/* The socket.io configuration begins here */
 var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function(socket) {
