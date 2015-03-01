@@ -1,0 +1,7 @@
+# We don't want to confuse anyone with .css files. We are using stylus
+*.css
+
+# We also don't want to infringe on anyones copyright. So we ignore all modules
+# but out own
+node_modules/*
+!node_modules/chessmate
