@@ -58,6 +58,8 @@ app.use(function(err, request, response, next) {
 var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function(socket) {
-    console.log('Test');
-    socket.emit('message', { message: 'Test' });
+    socket.emit('message', { message: 'You successfully connected!' });
+    socket.on('send', function(data) {
+        io.sockets.emit('message', data);
+    });
 });
