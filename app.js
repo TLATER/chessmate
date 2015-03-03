@@ -60,12 +60,20 @@ app.use(function(err, request, response, next) {
 /* The socket.io configuration begins here */
 var io = require('socket.io').listen(app.listen(port));
 
+var board;
 io.sockets.on('connection', function(socket) {
-    //socket.emit('message', { message: 'You successfully connected!' });
+    if (board === undefined)
+        board = mate.createGame();
+    io.sockets.emit('message', { board: board });
+
     socket.on('send', function(data) {
         if (mate.isCommand(data.message))
             socket.emit('message', mate.receive(data.message));
         else
             io.sockets.emit('message', mate.receive(data.message));
     });
+});
+
+mate.bus.on('sendMove', function(data) {
+    io.sockets.emit('message', data);
 });

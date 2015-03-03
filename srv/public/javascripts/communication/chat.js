@@ -10,7 +10,7 @@ window.onload = function() {
         if (data.board) {
             console.log(data.board);
         }
-        if (data.message) {
+        if (data.message !== undefined) {
             $('#messages').append("<div class='chatMessage'>" + data.message
                                                                     + "</div>");
             console.log(data.message);
