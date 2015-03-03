@@ -2,7 +2,7 @@
 *.css
 
 # We also don't want to infringe on anyones copyright. So we ignore all modules
-# but out own
+# but our own
 node_modules/*
 !node_modules/chessmate/*
 !node_modules/chessmate/node_modules/*
