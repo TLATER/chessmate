@@ -5,4 +5,4 @@
 # but out own
 #node_modules/*
 !node_modules/chessmate/*
-#!node_modules/chessmate/node_modules
+!node_modules/chessmate/node_modules/*
