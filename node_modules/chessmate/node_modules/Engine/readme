@@ -1,0 +1,24 @@
+I propose using the character "S" to represent a knight, instead of the
+more or less conventional "N", so that we can implement alternate variants of
+chess with Nightriders.
+
+Sauce: http://en.wikipedia.org/wiki/Algebraic_notation_(chess)
+
+
+If you will be working with my API I recommend reading up on chess algebraic
+notation. I will base my API on it.
+
+
+To Yi:
+
+Please create seperate constructors for each piece. The only difference between
+them should be the int they take, 1 being a white pawn, -1 a black pawn, etc.
+etc.
+
+0 denotes an empty square.
+
+When I create the board I will want to pass the position of my created pieces
+to an array in your methods. This will allow for more instantaneous access,
+since instead of iterating over the entire board we will only need to check
+a single array of pieces, and move thier locations to the board. Please create
+an API for that.
