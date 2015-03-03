@@ -20,10 +20,14 @@
           <div id= 'board'>
             <div class= 'stretchy-wrapper'>
               <div>
-                <% for (var i = 0; i < 8; i++) { %>
+                <% for (var i = 1; i < 9; i++) { %>
                   <div class='boardRow'>
-                    <% for (var j = 0; j < 8; j++) { %>
-                    <div class='boardCell'>
+                    <% for (var j = 1; j < 9; j++) { %>
+
+                    <% var white = ( ( i + j ) % 2 ) === 0 %>
+
+                    <div class=
+                           'boardCell <%= white ? 'white' : 'black' %>'>
                       <div class= 'stretchy-wrapper'>
                         <div></div>
                       </div>
