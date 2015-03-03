@@ -11,6 +11,9 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
 
+var chessmate = require('chessmate');
+var mate = new chessmate();
+
 var routes = require('./srv/routes/index');
 
 var app = express();
@@ -58,8 +61,11 @@ app.use(function(err, request, response, next) {
 var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function(socket) {
-    socket.emit('message', { message: 'You successfully connected!' });
+    //socket.emit('message', { message: 'You successfully connected!' });
     socket.on('send', function(data) {
-        io.sockets.emit('message', data);
+        if (mate.isCommand(data.message))
+            socket.emit('message', mate.receive(data.message));
+        else
+            io.sockets.emit('message', mate.receive(data.message));
     });
 });

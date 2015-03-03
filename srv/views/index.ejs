@@ -35,17 +35,15 @@
           </div>
         </div>
 
-        <div id= 'chatbox'>
-          <div class= 'stretchy-wrapper'>
-            <div>
-              <div id= 'messages'>
+      <div id= 'chatbox'>
+        <div class= 'stretchy-wrapper'>
+          <div>
+            <div id= 'messages'>
 
-              </div>
-              <div id= 'input'>
-                <input id= 'inputBox' type="text" name="inputBox" value="&nbsp;Enter a message">
-                  <div id= 'actionButton' class='raisedButton'>
-                        Send
-                  </div>
+            </div>
+              <input id='input' type='text'>
+                <div id='sendButton' class='raisedButton'>
+                  Send
                 </div>
               </div>
             </div>
@@ -59,5 +57,7 @@
           </div>
       </div>
     </div>
+  <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+  <% include partials/chatConnect %>
   </body>
 </html>
