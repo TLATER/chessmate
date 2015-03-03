@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Type your commit message, please"
+read commit
+
+ssh chessmate@www.tlater.net 'screen -S chessmateServer -p 0 -X stuff "^C"'
+
+git add --all
+git commit -m "$commit"
+git push
+
+ssh chessmate@www.tlater.net 'bash /home/chessmate/bin/testServer'
