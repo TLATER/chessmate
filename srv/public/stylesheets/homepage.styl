@@ -1,113 +1,82 @@
+// The idea is that anything that requires these is already made and not in
+// this stylus file. Fttb I guess it works, but rid of it ASAP.
 base-color = #9c27b0
 accent-color = #ffe57f
-
-header-height = 50px
-
-html
-    min-height 100%
-    position relative
-
-body
-    background #eee
-    height 100%
-
-#header
-#container
-#messages
-    clear both
-
-#container2
-#container1
-#board
-#chatbox
-#topscore
-#bottomscore
-    position relative
-
-#container2
-#container1
-    float left
-    width 100%
-
-#container2
-#board
-#chatbox
-    overflow hidden
-
-#header
-    background-color base-color
-    width 100%
-    height header-height
-    margin 0
-    padding 0
-    top 0
-    left 0
-    right 0
-    bottom 0
-    position relative
-
-#container
-    width 96%
-    max-width 1200px
-    height 90%
-    margin 0 auto
-    top header-height
-    bottom 0
-    left 0
-    right 0
-    background #fff
-    overflow hidden
-    border-radius: 0px 0px 6px 6px
-    -moz-border-radius: 0px 0px 6px 6px
-    -webkit-border-radius: 0px 0px 6px 6px
-    border 1px solid #ddd
-    z-index -1
-    position absolute
-    -webkit-box-shadow 1px 1px 2px 0px rgba(238,238,238,0.6)
-    -moz-box-shadow 1px 1px 2px 0px rgba(238,238,238,0.6)
-    box-shadow 1px 1px 2px 0px rgba(238,238,238,0.6)
-
-#container2
-    top 5px
-
-#container1
-    right 50%
-
-#scorestriptop
-#scorestripbottom
-    width 100%
-    height 30px
-    float left
-    top 0
-    position relative
-
-#scorestriptop
-    background #333
-
-#scorestripbottom
-    background #eee
 
 board-width = 46%
 board-min-width = 320px
 boardCell-width = 12.5%
 boardCell-min-width = 40px
 
-#topscore
-#bottomscore
+white-color = #F3E5F5
+black-color = #BA68C8
+
+@import 'base/functions'
+
+html
+    position relative
+
+body
+    background #eee
+    margin 0
+
+#page
+    text-align center
+
+#container
+    width 100%
+    max-width 1200px
+    display inline-table
+    text-align left
+
+#board
+    left 52%
+    margin 0
+    padding 0
+    min-width board-min-width
+    border 1px solid #ccc
+    display table-cell
+
+#boardTable
+    display table
+    width 100%
+
+.boardRow
+    display table-row
+
+.boardCell
+    width boardCell-width
+    min-width boardCell-min-width
+    display table-cell
+
+    &.black
+        background-color black-color
+
+    &.white
+        background-color white-color
+
+.scoreStrip
+    width 100%
+    height 30px
+    top 0
+    position relative
+
+#scoreStripTop
+    background #333
+    color white
+
+#scoreStripBottom
+    background #eee
+    color black
+
+.score
     height 30px
     line-height 30px
-    float left
     margin 0 0 0 2%
     padding 0
     width board-width
     min-width board-min-width
     font-size 12px
-
-#topscore
-    color #fff
-
-#bottomscore
-    color #000
 
 .spanLeft
     float left
@@ -120,48 +89,17 @@ boardCell-min-width = 40px
 .clear
     clear both
 
-#board
-    float left
-    left 52%
-    margin 0
-    padding 0
-    width board-width
-    min-width board-min-width
-    border 1px solid #ccc
-    display table
-    background url('/images/chess_vectors.svg') no-repeat
-
-div.stretchy-wrapper
+.stretchy-wrapper
     width 100%
     padding-bottom 100%
     position relative
-
-div.stretchy-wrapper > div
-    position absolute
-    top 0
-    bottom 0
-    left 0
-    right 0
-
-.boardRow
-    display table-row
-
-.boardCell
-    width boardCell-width
-    min-width boardCell-min-width
-    display table-cell
-
-.black
-    background-color black
-
-.white
-    background-color white
+    height 0
 
 chat-width = 46%
 chat-min-width = 320px
 
 #chatbox
-    float left
+    display table-cell
     left 55%
     margin 0
     padding 0

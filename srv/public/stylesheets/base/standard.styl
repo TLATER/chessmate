@@ -1,16 +1,6 @@
+@import functions
 base-color = #9c27b0
 accent-color = #ffe57f
-
-// Border radius works for all browsers
-border-radius()
-    -moz-border-radius arguments
-    -webkit-border-radius arguments
-    border-radius arguments
-
-transition()
-    -moz-transition arguments
-    -webkit-transition arguments
-    transition arguments
 
 // Set the body background to white so we know what to expect
 body
@@ -21,15 +11,17 @@ body
     font-family 'Roboto', sans-serif
     color black
 
+// A clearing div to clear floating divs
+.clear
+    clear both
+
 // A standard style for a container with rounded edges
 .roundedContainer
-    position fixed
     min-height 100px
+    overflow hidden
+    display inline-block
     border-radius .5em // Rounded edges
     box-shadow 2px 2px 6px gray
-    top 50%
-    left 50%
-    transform translate(-50%, -75%)
 
 // A standard style for a raised button
 .raisedButton
@@ -38,6 +30,8 @@ body
     line-height 36px
     text-align center
     margin 1px
+    display inline-block
+    position relative
 
     color rgba(255, 255, 255, .87)
     background-color base-color
@@ -50,24 +44,16 @@ body
     &:active
         background-color darken(@background-color, 15%)
         box-shadow 3px 3px 6px gray
-        
-        
-// A standard style for an accent action button
-#actionButton
-    min-width 88px
-    height 36px
-    line-height 36px
-    text-align center
-    margin 1px
 
-    color rgba(255, 255, 255, .87)
-    background-color accent-color
-    font-weight bold
-
-    transition all .1s
-    cursor pointer
-    box-shadow 1px 1px 3px gray
-
-    &:active
-        background-color darken(@background-color, 15%)
-        box-shadow 3px 3px 6px gray
+// The page header style
+#header
+    background-color base-color
+    width 100%
+    height 50px
+    margin 0
+    padding 0
+    top 0
+    left 0
+    right 0
+    bottom 0
+    position relative

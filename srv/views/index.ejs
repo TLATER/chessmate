@@ -1,67 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title%></title>
-    <% include partials/head %>
-    <link rel="stylesheet" href="/stylesheets/homepage.css"></link>
-  </head>
-  <body>
-    <div id= 'header'></div>
-    <div class= 'clear'></div>
-    <div id= 'container'>
-      <div id= 'container2'>
-        <div id= 'scorestriptop'>
-          <div id= 'topscore'>
-            <div class= 'spanLeft' style='color: #fff'>black</div>
-            <div class= 'spanRight' style='color: #fff'>time: 00:00</div>
-          </div>
+    <head>
+      <% include partials/head.ejs %>
+      <title>
+        Chessmate
+      </title>
+      <link rel="stylesheet" href="/stylesheets/login.css"></link>
+    </head>
+    <body>
+      <div class='header'>Chessmate</div>
+
+      <!-- Don't use h3 and please don't go past line 80. Srsly. -->
+      <div class='paragraph'>
+
+        <div class='welcomeText'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac
+            mi est. Morbi non dolor magna. Donec feugiat urna non lacus
+            facilisis, efficitur congue purus ullamcorper. Mauris molestie
+            vitae purus sit amet pretium.
         </div>
-        <div id= 'container1'>
-          <div id= 'board'>
-            <div class= 'stretchy-wrapper'>
-              <div>
-                <% for (var i = 1; i < 9; i++) { %>
-                  <div class='boardRow'>
-                    <% for (var j = 1; j < 9; j++) { %>
 
-                    <% var white = ( ( i + j ) % 2 ) === 0 %>
-
-                    <div class=
-                           'boardCell <%= white ? 'white' : 'black' %>'>
-                      <div class= 'stretchy-wrapper'>
-                        <div></div>
-                      </div>
-                    </div>
-                  <% } %>
-                </div>
-              <% } %>
-            </div>
+        <div id='buttonWrapper'>
+          <div id='loginButton' class='raisedButton wrappedButton'>
+            Login
+          </div>
+          <div id='registerButton' class='raisedButton wrappedButton'>
+            Register
           </div>
         </div>
 
-      <div id= 'chatbox'>
-        <div class= 'stretchy-wrapper'>
-          <div>
-            <div id= 'messages'>
-
-            </div>
-              <input id='input' type='text'>
-                <div id='sendButton' class='raisedButton'>
-                  Send
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id= 'scorestripbottom'>
-            <div id= 'bottomscore'>
-              <div class= 'spanLeft'>white</div>
-              <div class= 'spanRight'>time: 00:00</div>
-            </div>
-          </div>
       </div>
-    </div>
-  <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
-  <% include partials/chatConnect %>
-  </body>
+      <input id='screenshot' type="image" src="../images/screenshot.png">
+
+    </body>
+    <!--Script section-->
+        <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <!--/Script section-->
 </html>
