@@ -4,6 +4,7 @@
     <title><%= title%></title>
     <% include partials/head %>
     <link rel="stylesheet" href="/stylesheets/homepage.css"></link>
+    <link rel="stylesheet" href="/stylesheets/pieces.css"></link>
   </head>
   <body>
     <% include partials/header %>
@@ -11,10 +12,10 @@
       <div id= 'container' class='roundedContainer'>
         <div id= 'board'>
 
-          <div id= 'scoreStripTop' class='scoreStrip'>
+          <div class='scoreStrip black'>
             <div class='score'>
-              <div class= 'spanLeft' style='color: #fff'>black</div>
-              <div class= 'spanRight' style='color: #fff'>time: 00:00</div>
+              <div class= 'spanLeft'>black</div>
+              <div class= 'spanRight'>time: 00:00</div>
             </div>
           </div>
 
@@ -35,7 +36,7 @@
             </div>
           </div>
 
-          <div id= 'scoreStripBottom' class='scoreStrip'>
+          <div class='scoreStrip white'>
             <div class='score'>
               <div class= 'spanLeft'>white</div>
               <div class= 'spanRight'>time: 00:00</div>
@@ -45,16 +46,11 @@
         </div>
 
         <div id= 'chatbox'>
-          <div class= 'stretchy-wrapper'>
-            <div>
-              <div id= 'messages'>
-              </div>
-              <input id='input' type='text'>
-              <div id='sendButton' class='raisedButton'>
-                Send
-              </div>
-            </div>
-          </div>
+
+          <div id= 'messages'></div>
+          <div id='username'>TestUser</div>
+          <input id='input' type='text'>
+
         </div>
 
       </div>

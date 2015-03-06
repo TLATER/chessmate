@@ -8,9 +8,10 @@ router.get('/', function(request, response) {
     response.render('index', { title: 'Chessmate' });
 });
 
-router.get('/login', function(request, response) {
-    response.render('login.ejs', { title: 'Chessmate'});
+router.get('/game', function(request, response) {
+    response.render('game', { title: 'Chessmate' });
 });
+
 
 router.get('/socketTest', function(request, response) {
     response.render('socket/socketTest.ejs');
