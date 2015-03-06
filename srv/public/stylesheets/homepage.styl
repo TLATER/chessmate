@@ -1,10 +1,8 @@
-boardCell-width = 12.5%
-boardCell-min-width = 40px
+BORDCELL_WIDTH = 12.5%
+BORDCELL_MIN_WIDTH = 40px
 
-white-color = #F3E5F5
-black-color = #BA68C8
-
-@import 'base/functions'
+WHITE_CELL_COLOR = #F3E5F5
+BLACK_CELL_COLOR = #BA68C8
 
 html
     position relative
@@ -17,7 +15,7 @@ body
     padding-top 25px
     text-align center
 
-#container
+#gameContainer
     width 100%
     max-width 1200px
     display inline-table
@@ -36,8 +34,8 @@ body
     display table-row
 
 .boardCell
-    width boardCell-width
-    min-width boardCell-min-width
+    width BORDCELL_WIDTH
+    min-width BORDCELL_MIN_WIDTH
     display table-cell
     background-size 400%
     background-image url('/images/chess_vectors.svg')
@@ -45,10 +43,10 @@ body
     background-position 75px 75px
 
     &.black
-        background-color black-color
+        background-color BLACK_CELL_COLOR
 
     &.white
-        background-color white-color
+        background-color WHITE_CELL_COLOR
 
 .scoreStrip
     width 100%
