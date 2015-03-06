@@ -1,18 +1,8 @@
-// The idea is that anything that requires these is already made and not in
-// this stylus file. Fttb I guess it works, but rid of it ASAP.
-base-color = #9c27b0
-accent-color = #ffe57f
-
-board-width = 46%
-board-min-width = 320px
 boardCell-width = 12.5%
 boardCell-min-width = 40px
 
 white-color = #F3E5F5
 black-color = #BA68C8
-
-chat-width = 46%
-chat-min-width = 320px
 
 @import 'base/functions'
 
@@ -49,6 +39,9 @@ body
     min-width boardCell-min-width
     display table-cell
     background-size 400%
+    background-image url('/images/chess_vectors.svg')
+    background-repeat no-repeat
+    background-position 75px 75px
 
     &.black
         background-color black-color
