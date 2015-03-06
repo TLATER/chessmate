@@ -94,29 +94,34 @@ body
 
 #chatbox
     display table-cell
+    position relative
+    top 0
+    left 0
+    right 0
+    bottom 0
+    table-layout fixed
     width 50%
     height 100%
     min-height board-min-width
     border-left 1px solid #ccc
     vertical-align top
-    padding 0 2% 0 2%
-    font-size 12px
+    //padding 0 2% 0 2%
+    font-size 16px
 
 #messages
-    display inline-block
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 3em
     background-color white
-    height 87%
-    width 100%
-    margin-top 5%
     overflow auto
 
-#username
-    display inline-block
-
 #input
-    display inline-block
-    width 100%
+    position absolute
+    display block
     bottom 0
-    height 16px
-    border-top 1px solid #ccc
-    border-radius 0.5em
+    height 3.3em
+    width 100%
+    border none
+    border-top 1px solid purple

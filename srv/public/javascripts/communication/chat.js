@@ -19,7 +19,7 @@ window.onload = function() {
     });
 
     input.onkeypress = function(keypress) {
-        if (keypress.keyIdentifier === 'Enter' && input.value != '') {
+        if (keypress.keyIdentifier === 'Enter') {
             var text = input.value;
             socket.emit('send', { message: text });
 
