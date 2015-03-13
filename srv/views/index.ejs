@@ -8,9 +8,11 @@
     <body>
       <div class='homepageHeader'>
         <img id='logoHeader' src="../images/Logo.png">
-        <div id='titleHeader'>
-          Chessmate
-        </div>
+        <a id='homepageLink' href="/">
+          <div id='titleHeader' class='button flatButton'>
+            Chessmate
+          </div>
+        </a>
 
       </div>
       <div class='paragraph'>
@@ -23,13 +25,13 @@
         </div>
 
         <div id='buttonWrapper'>
-          <a id='loginButton' href = "/login">
-          <div id='loginButton' class='button raisedButton wrappedButton'>
-            Login
-          </div>
-          </a>
-          <a id='registerButton' href='/register'>
-            <div id='registerButton' class='button raisedButton wrappedButton'>
+          <a class='logregButton' href = "/login">
+            <div class='button raisedButton wrappedButton'>
+              Login
+            </div>
+           </a>
+           <a class='logregButton'  href='/register'>
+             <div class='button raisedButton wrappedButton'>
               Register
             </div>
           </a>

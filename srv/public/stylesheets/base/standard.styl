@@ -3,7 +3,8 @@ base-color = #9c27b0
 accent-color = #ffe57f
 
 body
-    background-color white
+    background-color #eee
+    margin 0
 
 div
     font-family 'Roboto', sans-serif
@@ -23,13 +24,14 @@ div
     box-shadow 2px 2px 6px gray
 
 .button
-    min-width 88px
-    height 36px
-    line-height 36px
+    min-width 96px
+    height 42px
+    line-height 42px
     text-align center
     margin 1px
     display inline-block
     position relative
+    padding 2px
 
     &.raisedButton
         color white
@@ -45,43 +47,56 @@ div
             background-color darken(@background-color, 15%)
             box-shadow 3px 3px 6px gray
 
-    &.flatButton
+    &.flatButton, &.loginButton
         color white
         color rgba(255, 255, 255, .87)
-        font-weight bold
-        
+
         transition all .1s
         cursor pointer
-        
+
         &:active
             background-color darken(base-color, 15%)
     
+    &.loginButton
+        background base-color
+
 .title
     display table-cell
     padding 10px 0px 0px 13%
     color white
     color rgba(255, 255, 255, .87)
     font-size: 30px
+    width 170px
+    text-align center
 
 .wrappedButton
     display table-cell
-    
+
+
 //ID
-    
+
 #header
     background-color base-color
     width 100%
     display table
     box-shadow 2px 2px 6px gray
-    
+
 #headerRight
     display table-cell
     text-align right
+    font-weight bold
 
 #buttonWrapper
     display inline-table
     border-spacing 5px
     padding 10px 0px 0px 0px
-    
+
 #homepageLink
     text-decoration none
+
+#screenshot
+    width 90%
+    padding: 60px 0px 0px 0px
+    display: block
+    margin-left: auto
+    margin-right: auto

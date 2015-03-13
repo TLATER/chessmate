@@ -3,55 +3,68 @@
   <head>
     <title><%= title%></title>
     <% include partials/head %>
-    <link rel="stylesheet" href="/stylesheets/homepage.css"></link>
+    <link rel="stylesheet" href="/stylesheets/game.css"></link>
     <link rel="stylesheet" href="/stylesheets/pieces.css"></link>
   </head>
   <body>
     <% include partials/header %>
     <div id='page'>
-      <div id= 'gameContainer' class='roundedContainer'>
-        <div id= 'board'>
 
-          <div class='scoreStrip black'>
-            <div class='score'>
-              <div class= 'spanLeft'>black</div>
-              <div class= 'spanRight'>time: 00:00</div>
+      <div id='prompt' class='hidden'>
+        <div id='newGameButton' class='button raisedButton'>
+          Find a new Game!
+        </div>
+        <div id='spectate' class='button raisedButton'>
+          Spectate someone!
+        </div>
+      </div>
+
+      <div id='game' class='hidden'>
+        <div id= 'gameContainer' class='roundedContainer'>
+
+          <div id= 'board'>
+
+            <div class='scoreStrip black'>
+              <div class='score'>
+                <div class= 'spanLeft'>black</div>
+                <div class= 'spanRight'>time: 00:00</div>
+              </div>
             </div>
-          </div>
 
-          <div class= 'stretchy-wrapper'>
-            <div id='boardTable'>
-              <% for (var i = 1; i < 9; i++) { %>
-                <div class='boardRow'>
-                  <% for (var j = 1; j < 9; j++) { %>
+            <div class= 'stretchy-wrapper'>
+              <div id='boardTable'>
+                <% for (var i = 1; i < 9; i++) { %>
+                  <div class='boardRow'>
+                    <% for (var j = 1; j < 9; j++) { %>
 
-                  <% var white = ( ( i + j ) % 2 ) === 0 %>
-                  <div class='boardCell <%= white ? 'white' : 'black' %>'>
-                    <div class= 'stretchy-wrapper'>
+                    <% var white = ( ( i + j ) % 2 ) === 0 %>
+                    <div class='boardCell <%= white ? 'white' : 'black' %>'>
+                      <div class= 'stretchy-wrapper'>
+                      </div>
                     </div>
+                    <% } %>
                   </div>
-                  <% } %>
-                </div>
-              <% } %>
+                <% } %>
+              </div>
             </div>
+
+            <div class='scoreStrip white'>
+              <div class='score'>
+                <div class= 'spanLeft'>white</div>
+                <div class= 'spanRight'>time: 00:00</div>
+              </div>
+            </div>
+
           </div>
 
-          <div class='scoreStrip white'>
-            <div class='score'>
-              <div class= 'spanLeft'>white</div>
-              <div class= 'spanRight'>time: 00:00</div>
-            </div>
+          <div id= 'chatbox'>
+
+            <div id= 'messages'></div>
+            <input id='input' placeholder='Type!' type='text'>
+
           </div>
 
         </div>
-
-        <div id= 'chatbox'>
-
-          <div id= 'messages'></div>
-          <input id='input' placeholder='Type!' type='text'>
-
-        </div>
-
       </div>
     </div>
     <!-- Script section -->

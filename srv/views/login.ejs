@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <% include partials/head.ejs %>
-        <title>Login with chessmate!</title>
-        <link rel="stylesheet" href="/stylesheets/login.css"></link>
-        <link rel="stylesheet" href="/stylesheets/standard.css"></link>
-    </head>
 
-    <body>
-        <% include partials/header %>
-        <div class='loginRegisterPage'>
-            <div class='roundedContainer' id='loginRegisterBox'>
-                <div class='loginRegisterHeader'>
-                    Login
-                </div>
-                <div id='loginBox' class='loginRegisterForm'>
-                    <form class='innerForm' action='/register' method = "post">
+<head>
+    <% include partials/head.ejs %>
+    <title>Login with chessmate!</title>
+    <link rel="stylesheet" href="/stylesheets/login.css"></link>
+</head>
+
+<body>
+    <% include partials/header %>
+    <div class='loginRegisterPage'>
+        <div class='roundedContainer' id='loginRegisterBox'>
+            <div class='loginRegisterHeader'>
+                Login
+            </div>
+
+            <div id='loginBox' class='loginRegisterForm'>
+                <form class='innerForm' action='/register' method="post">
+                    <div class='oneField'>
                         <div class='fieldName'>Name</div>
                         <input class='inputBox' id='username' type='text'>
+                    </div>
+                    <div class='oneField'>
                         <div class='fieldName'>Password</div>
                         <input class='inputBox' id='password' type='password'>
-                        </br></br>
-                        <input type='submit' value='Submit'>
-                        <!-- Script section -->
-                        <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
-                        <script src='/javascripts/login/form.js'></script>
-                    </form>
-                    <!-- /Script section -->
-                </div>            
+                    </div>
+
+                    <div class='submitLogin'>
+                        <a class='submitLogin' href="/login">
+                            <div class='button loginButton wrappedButton'>
+                                Login
+                            </div>
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
+    <!-- Script section -->
+    <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <script src='/javascripts/login/form.js'></script>
+    <!-- /Script section -->
 
-    </body>
+</body>
+
 </html>

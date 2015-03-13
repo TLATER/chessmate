@@ -27,6 +27,7 @@ accent-color = #ffe57f
     text-align: center
     
 .fieldName
+    color base-color
     color black
     color rgba(0, 0, 0, .87)
     
@@ -38,35 +39,61 @@ accent-color = #ffe57f
     padding 0px 0px 20px 0px
     font-size 40px
     color white
-    color rgba(255, 255, 255, .87)
+    // color rgba(255, 255, 255, .87)
     text-align center
     
 .loginRegisterForm
     background-color white
     background-color rgba(255, 255, 255, .87)
-    color black
     color rgba(0, 0, 0, .87)
+
+.loginRegisterFooter
+    bottom 42px
+    height 42px
+    margin 20px 0 0
+    padding 0
+    background base-color
+    text-align center
     
 .innerForm
     padding-top 20px
+    width 80%
+    margin auto
+    text-align left
     
 .inputBox
-    width 80%
-    height 20%
-    padding 10px ,0px, 10px, 0px
+    width 100%
+    height 30px
+    font-size 25px
+    font-weight lighter
+    color black
+    color rgba(0, 0, 0, 0.87)
+    
+.oneField
+    padding-bottom 10px
 
+a.logregButton, a.submitLogin
+    text-decoration none
+
+a.submitLogin
+    display inline-block
+
+.innerForm a
+    color white
+
+.submitLogin
+    text-align center
+    color white
+    color rgba(255, 255, 255, 0.87)
+    font-weight bold
 
 // ID
 
-#screenshot
-    padding: 60px 0px 0px 0px
-    display: block
-    margin-left: auto
-    margin-right: auto
-    width 100%
-
 #buttonWrapper
-    width 400px
+    min-width 200px
+    height 40px
+    margin 10px auto 0
+    display inline-flex
     
 #logoHeader
     width 120px
@@ -76,7 +103,6 @@ accent-color = #ffe57f
 #titleHeader
     display inline-block
     color white
-    color rgba(255, 255, 255, .87)
     
 #welcomeText
     width 80%
@@ -85,13 +111,8 @@ accent-color = #ffe57f
 #loginRegisterBox
     padding: 15px 10px 10px 10px
     margin 0 auto
+    min-width 350px
     width 20%
     color white
     background-color base-color
     text-align center
-    
-#loginButton
-    text-decoration none
-
-#registerButton
-    text-decoration none
