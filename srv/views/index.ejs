@@ -2,33 +2,41 @@
 <html>
     <head>
       <% include partials/head.ejs %>
-      <title>
-        Chessmate
-      </title>
+      <title>Chessmate</title>
       <link rel="stylesheet" href="/stylesheets/login.css"></link>
     </head>
     <body>
-      <div class='header'>Chessmate</div>
-      <div class='paragraph'>
-
-        <div class='welcomeText'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac
-            mi est. Morbi non dolor magna. Donec feugiat urna non lacus
-            facilisis, efficitur congue purus ullamcorper. Mauris molestie
-            vitae purus sit amet pretium.
-        </div>
-
-        <div id='buttonWrapper'>
-          <div id='loginButton' class='button raisedButton wrappedButton'>
-            Login
-          </div>
-          <div id='registerButton' class='button raisedButton wrappedButton'>
-            Register
-          </div>
+      <div class='homepageHeader'>
+        <img id='logoHeader' src="../images/Logo.png">
+        <div id='titleHeader'>
+          Chessmate
         </div>
 
       </div>
-      <input id='screenshot' type="image" src="../images/screenshot.png">
+      <div class='paragraph'>
+
+        <div id='welcomeText'>
+            Welcome to group X1's online web application team project for the
+            University of Manchester. Play and chat along with friends online 
+            in our Chess Simulator! Just login or register below to get
+            started!
+        </div>
+
+        <div id='buttonWrapper'>
+          <a id='loginButton' href = "/login">
+          <div id='loginButton' class='button raisedButton wrappedButton'>
+            Login
+          </div>
+          </a>
+          <a id='registerButton' href='/register'>
+            <div id='registerButton' class='button raisedButton wrappedButton'>
+              Register
+            </div>
+          </a>
+        </div>
+
+      </div>
+      <img id='screenshot' src="../images/screenshot.png">
 
     </body>
     <!--Script section-->

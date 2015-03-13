@@ -2,7 +2,7 @@
 <html>
     <head>
         <% include partials/head.ejs %>
-        <title>Register with chessmate!</title>
+        <title>Login with chessmate!</title>
         <link rel="stylesheet" href="/stylesheets/login.css"></link>
         <link rel="stylesheet" href="/stylesheets/standard.css"></link>
     </head>
@@ -12,28 +12,25 @@
         <div class='loginRegisterPage'>
             <div class='roundedContainer' id='loginRegisterBox'>
                 <div class='loginRegisterHeader'>
-                    Register
+                    Login
                 </div>
-                <div id='registerBox' class='loginRegisterForm'>
+                <div id='loginBox' class='loginRegisterForm'>
                     <form class='innerForm' action='/register' method = "post">
                         <div class='fieldName'>Name</div>
                         <input class='inputBox' id='username' type='text'>
-                        <div class='fieldName'>Email</div>
-                        <input class='inputBox' id='email' type='email'>
                         <div class='fieldName'>Password</div>
                         <input class='inputBox' id='password' type='password'>
-                        <div class='fieldName'>Repeat Password</div>
-                        <input class='inputBox' id='repeatPassword' type='password'>
                         </br></br>
                         <input type='submit' value='Submit'>
+                        <!-- Script section -->
+                        <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+                        <script src='/javascripts/login/form.js'></script>
                     </form>
-                    <!-- Script section -->
-                    <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
-                    <script src='/javascripts/login/form.js'></script>
                     <!-- /Script section -->
-                </div>
+                </div>            
             </div>
         </div>
+
 
     </body>
 </html>

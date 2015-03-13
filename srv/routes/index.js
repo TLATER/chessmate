@@ -12,6 +12,13 @@ router.get('/game', function(request, response) {
     response.render('game', { title: 'Chessmate' });
 });
 
+router.get('/register', function(request, response){
+    response.render('register', { title: 'register'});
+});
+
+router.get('/login', function(request, response){
+    response.render('login', { title: 'login'});
+});
 
 router.get('/socketTest', function(request, response) {
     response.render('socket/socketTest.ejs');
