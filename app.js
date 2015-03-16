@@ -3,19 +3,23 @@ var path = require('path');
 // The port we are listening on
 var port = process.env.PORT ? process.env.PORT : '3000';
 var favicon = require('serve-favicon');
-
 var logger = require('morgan');
 var mongoose = require('mongoose');
+// var user = mongoose.model("User");
 
 var user = require("./config/user");
-var newU = new user();
-newU.username = "Alex";
+//var userSchema = mongoose.Schema;
 
-mongoose.connect('mongodb://localhost', function(){
+var db = mongoose.connect('mongodb://localhost', function(){
     console.log("works!!");
+    var connection = mongoose.connection;
+    var user1 = new user();
+    user1.username = "Alex";
+    user1.save();
+    console.log(user1);
+    if(user.find({username : "Alex"}) !== undefined)
+        console.log(user.username);
 });
-
-var connection = mongoose.connection;
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -53,6 +57,13 @@ require('./config/register')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+app.use(session({
+  cookieName: 'session',
+  secret: 'random_string_goes_here',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+}));
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler
@@ -113,6 +124,8 @@ app.use(function(err, request, response, next) {
 /* The socket.io configuration begins here */
 var io = require('socket.io').listen(app.listen(port));
 
+/* The chessmate setup goes here */
+
 var board;
 io.sockets.on('connection', function(socket) {
     if (board === undefined)
@@ -129,4 +142,47 @@ io.sockets.on('connection', function(socket) {
 
 mate.bus.on('sendMove', function(data) {
     io.sockets.emit('message', data);
+});
+
+function room(roomName, playerCount) {
+    this.roomName = roomName;
+    this.playerCount = 0;
+}
+
+/* The chessmate games */
+var games = [];
+var gameRooms = io.of('/gameRooms');
+gameRooms.on('connection', function(socket) {
+     // If someone is looking for a new game
+    socket.on('newGame', function() {
+
+        // Go through all games and see if there is a game waiting for someone
+        // to join, if there is, subscribe this socket
+        for (var i = 0; i < games.length; i++) {
+            if (games[i].playerCount < 2) {
+                games[i].playerCount++;
+                socket.join(games[i].roomName);
+                return;
+            }
+        }
+
+        // If all games are full, create a new game,
+        // add a new player and subscribe the socket
+        var name = 'game-standard-' + games.length;
+        games.push(new room(name, 1));
+        socket.join(name);
+    });
+});
+
+/* The chessmate lobby */
+var lobbyRooms = io.of('lobbyRooms');
+lobbyRooms.on('connection', function(socket) {
+    socket.emit('welcome', 'Welcome to the server! Type /help for a list of' +
+                           'commands or /newGame to start a new game.');
+    socket.on('send', function(data) {
+        if (mate.isLobbyCommand(data.message))
+            socket.emit('message', mate.lobbyReceive(data.message));
+        else
+            lobbyRooms.emit('message', data);//mate.lobbyReceive(data.message));
+    });
 });

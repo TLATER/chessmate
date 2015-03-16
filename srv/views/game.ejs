@@ -10,15 +10,6 @@
     <% include partials/header %>
     <div id='page'>
 
-      <div id='prompt' class='hidden'>
-        <div id='newGameButton' class='button raisedButton'>
-          Find a new Game!
-        </div>
-        <div id='spectate' class='button raisedButton'>
-          Spectate someone!
-        </div>
-      </div>
-
       <div id='game' class='hidden'>
         <div id= 'gameContainer' class='roundedContainer'>
 
@@ -38,7 +29,10 @@
                     <% for (var j = 1; j < 9; j++) { %>
 
                     <% var white = ( ( i + j ) % 2 ) === 0 %>
-                    <div class='boardCell <%= white ? 'white' : 'black' %>'>
+                    <%var alphabet = "ABCDEFGH".split("");%>
+                    <div class='boardCell <%= white ? 'white' : 'black' %>' 
+                         id= '<%= alphabet[j - 1]+(8 - (i - 1))%>'>
+                    <div ></div>
                       <div class= 'stretchy-wrapper'>
                       </div>
                     </div>
@@ -64,6 +58,13 @@
 
           </div>
 
+        </div>
+      </div>
+
+      <div id='lobby' class='roundedContainer'>
+        <div id='lobbyContainer'>
+          <div id='lobbyMessages'></div>
+          <input id='lobbyInput'></div>
         </div>
       </div>
     </div>

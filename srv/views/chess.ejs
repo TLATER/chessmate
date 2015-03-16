@@ -11,6 +11,8 @@
                 <div class="board-row">
                     <% for (var j = 0; j < 8; j++) { %>
                     <div class="board-cell">A1</div>
+                    <%var alphabet = "ABCDEFGH".split("");%>
+                    <div id= <%alphabet[index]+(8 - index)%>></div>
                     <% } %>
                 </div>
             <% } %>

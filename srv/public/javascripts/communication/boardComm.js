@@ -3,12 +3,51 @@ window.onload = function() {
     var input = document.getElementById('input');
     var output = $('#messages');
 
+    input.onkeypress = function(keypress) {
+        if (keypress.keyIdentifier === 'Enter') {
+            var text = input.value;
+            socket.emit('send', { message: text });
+
+            input.value = '';
+        }
+    };
+    
+    // Making boardCell clickable
+    // $('.boardCell').click( function() {
+    //     $(this.id).toggle("highlight");
+    // });
 
     socket.on('message', function(data) {
+        
+        // Function to find what chess piece a div may curently have.
+        function findPiece(id) {
+            var pieceClasses = "rookB knightB bishopB queenB kingB pawnB rookW knightW bishopW queenW knightW pawnW".split(" ");
+            for (var i = 0; i<pieceClasses.length; i++) {
+                if ($(id).hasClass(pieceClasses[i])) {
+                    console.log("Moving " +pieceClasses[i]);
+                    return pieceClasses[i];
+                } else {
+                    console.log("There isn't a piece on " + id);
+                    return false;
+                }
+            } // for
+        } // findPiece
 
         // Add the logic that interprets a move from the server here.
         if (data.move) {
             console.log(data.move);
+            // JSON of the move the client wants to make
+            var desiredMove = JSON.parse(data.move);
+            var currentPositionID = '#'+desiredMove[0];
+            var desiredPositionID = '#'+desiredMove[1];
+            var movingPiece = findPiece(currentPositionID)+ " ";
+            $(currentPositionID).toggleClass(movingPiece);
+            $(desiredPositionID).toggleClass(movingPiece);
+            
+            // For debugging
+            var test = $(currentPositionID).hasClass('pawnW');
+            console.log(currentPositionID);
+            console.log(test);
         }
 
         function placePiece() {
@@ -48,7 +87,7 @@ window.onload = function() {
                             $(cell).toggleClass('rookB ');
                             break;
                         case 'P':
-                            $(cell).toggleClass('pawnB');
+                            $(cell).toggleClass('pawnB ');
                             break;
 
                         case 'RW':
@@ -76,7 +115,7 @@ window.onload = function() {
                             $(cell).toggleClass('rookW ');
                             break;
                         case 'PW':
-                            $(cell).toggleClass('pawnW');
+                            $(cell).toggleClass('pawnW ');
                             break;
                     } // switch
                 } // for
@@ -99,14 +138,5 @@ window.onload = function() {
             console.log(data.message);
         }
     });
-
-    input.onkeypress = function(keypress) {
-        if (keypress.keyIdentifier === 'Enter') {
-            var text = input.value;
-            socket.emit('send', { message: text });
-
-            input.value = '';
-        }
-    };
-
+    lobbyConnect();
 };

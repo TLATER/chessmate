@@ -4,16 +4,19 @@ BORDCELL_MIN_WIDTH = 40px
 WHITE_CELL_COLOR = #CE93D8
 BLACK_CELL_COLOR = #9C27B0
 
-html
-    position relative
-
 #page
     padding-top 25px
-    text-align center
+    display table
+    width 100%
+
+#game
+    padding-left 7%
+    display table-cell
+    width 80%
 
 #gameContainer
-    width 100%
     max-width 1200px
+    width 100%
     display inline-table
     text-align left
 
@@ -81,10 +84,6 @@ html
 #chatbox
     display table-cell
     position relative
-    top 0
-    left 0
-    right 0
-    bottom 0
     width 50%
     height 100%
     border-left 1px solid #ccc
@@ -112,12 +111,38 @@ html
     border none
     border-top 1px solid purple
 
-#prompt
-    padding 5px
-    margin-left 20%
+#lobby
+    display inline-table
+    margin-left 5%
+    width 90%
+    height 100%
     text-align left
-    display none
 
-#welcome
-    font-size 20px
-    font-weight bold
+#lobbyMessages
+    position absolute
+    left 0
+    right 0
+    top 0
+    padding 3px
+    bottom 30px
+    background-color white
+    overflow auto
+
+#lobbyInput
+    position absolute
+    display block
+    bottom 0
+    height 30px
+    width 100%
+    padding 0
+    padding-left 3px
+    border none
+    border-top 1px solid purple
+
+#lobbyContainer
+    display table-cell
+    position relative
+    width 100%
+    height 100%
+    vertical-align top
+    font-size 14px
