@@ -24,15 +24,28 @@ window.onload = function() {
             var pieceClasses = "rookB knightB bishopB queenB kingB pawnB rookW knightW bishopW queenW knightW pawnW".split(" ");
             for (var i = 0; i<pieceClasses.length; i++) {
                 if ($(id).hasClass(pieceClasses[i])) {
-                    console.log("Moving " +pieceClasses[i]);
+                    console.log("Moving " + pieceClasses[i]);
                     return pieceClasses[i];
-                } else {
+                } else if (i === 8 && !$(id).hasClass(pieceClasses[i])) {
                     console.log("There isn't a piece on " + id);
-                    return false;
-                }
+                    //return false;
+                } // else 
             } // for
         } // findPiece
-
+        /**
+         * I think i gonna change it so that you input the piece you want to 
+         * move and the place you want to put it i.e '/move pawnW A5'
+         * This might help account for if you are trying to place one of 
+         * your own pieces ontop of each other.
+         * 
+         * I need to find a way to ignore the other classes that boardCell is
+         * with.
+         * 
+         * Gonna be parsing the current piece class' id so I might not have to
+         * change wwhat i have already done and should make it so engin stuff
+         * does not change to much
+         */
+         
         // Add the logic that interprets a move from the server here.
         if (data.move) {
             console.log(data.move);
@@ -46,8 +59,8 @@ window.onload = function() {
             
             // For debugging
             var test = $(currentPositionID).hasClass('pawnW');
-            console.log(currentPositionID);
-            console.log(test);
+            console.log('*'+currentPositionID);
+            console.log('*'+test);
         }
 
         function placePiece() {
