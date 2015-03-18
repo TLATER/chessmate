@@ -11,14 +11,14 @@ window.onload = function() {
             input.value = '';
         }
     };
-    
+
     // Making boardCell clickable
     // $('.boardCell').click( function() {
     //     $(this.id).toggle("highlight");
     // });
 
     socket.on('message', function(data) {
-        
+
         // Function to find what chess piece a div may curently have.
         function findPiece(id) {
             var pieceClasses = "rookB knightB bishopB queenB kingB pawnB rookW knightW bishopW queenW knightW pawnW".split(" ");
@@ -29,23 +29,23 @@ window.onload = function() {
                 } else if (i === 8 && !$(id).hasClass(pieceClasses[i])) {
                     console.log("There isn't a piece on " + id);
                     //return false;
-                } // else 
+                } // else
             } // for
         } // findPiece
         /**
-         * I think i gonna change it so that you input the piece you want to 
+         * I think i gonna change it so that you input the piece you want to
          * move and the place you want to put it i.e '/move pawnW A5'
-         * This might help account for if you are trying to place one of 
+         * This might help account for if you are trying to place one of
          * your own pieces ontop of each other.
-         * 
+         *
          * I need to find a way to ignore the other classes that boardCell is
          * with.
-         * 
+         *
          * Gonna be parsing the current piece class' id so I might not have to
          * change wwhat i have already done and should make it so engin stuff
          * does not change to much
          */
-         
+
         // Add the logic that interprets a move from the server here.
         if (data.move) {
             console.log(data.move);
@@ -54,9 +54,13 @@ window.onload = function() {
             var currentPositionID = '#'+desiredMove[0];
             var desiredPositionID = '#'+desiredMove[1];
             var movingPiece = findPiece(currentPositionID)+ " ";
+
+            var color = $(desiredPositionID).hasClass('white')
+                                                        ? ' white ' : ' black ';
             $(currentPositionID).toggleClass(movingPiece);
-            $(desiredPositionID).toggleClass(movingPiece);
-            
+            $(desiredPositionID).removeClass();
+            $(desiredPositionID).addClass(movingPiece + color + 'boardCell');
+
             // For debugging
             var test = $(currentPositionID).hasClass('pawnW');
             console.log('*'+currentPositionID);
@@ -151,5 +155,6 @@ window.onload = function() {
             console.log(data.message);
         }
     });
+    gamesConnect();
     lobbyConnect();
 };

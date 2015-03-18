@@ -144,7 +144,7 @@ mate.bus.on('sendMove', function(data) {
     io.sockets.emit('message', data);
 });
 
-function room(roomName, playerCount) {
+function room(roomName) {
     this.roomName = roomName;
     this.playerCount = 0;
 }
@@ -153,7 +153,22 @@ function room(roomName, playerCount) {
 var games = [];
 var gameRooms = io.of('/gameRooms');
 gameRooms.on('connection', function(socket) {
-     // If someone is looking for a new game
+    gameRooms.emit('message', 'First contact!');
+});
+
+/* The chessmate lobby */
+var lobbyRooms = io.of('/lobbyRooms');
+lobbyRooms.on('connection', function(socket) {
+    socket.emit('welcome', 'Welcome to the server! Type /help for a list of ' +
+                           'commands or /newGame to start a new game.');
+    socket.on('send', function(data) {
+        //if (mate.isLobbyCommand(data.message))
+            //socket.emit('message', mate.lobbyReceive(data.message));
+        //else
+            lobbyRooms.emit('message', data);//mate.lobbyReceive(data.message));
+    });
+
+    // If someone is looking for a new game
     socket.on('newGame', function() {
 
         // Go through all games and see if there is a game waiting for someone
@@ -169,20 +184,9 @@ gameRooms.on('connection', function(socket) {
         // If all games are full, create a new game,
         // add a new player and subscribe the socket
         var name = 'game-standard-' + games.length;
-        games.push(new room(name, 1));
+        games.push(new room(name));
         socket.join(name);
-    });
-});
-
-/* The chessmate lobby */
-var lobbyRooms = io.of('lobbyRooms');
-lobbyRooms.on('connection', function(socket) {
-    socket.emit('welcome', 'Welcome to the server! Type /help for a list of' +
-                           'commands or /newGame to start a new game.');
-    socket.on('send', function(data) {
-        if (mate.isLobbyCommand(data.message))
-            socket.emit('message', mate.lobbyReceive(data.message));
-        else
-            lobbyRooms.emit('message', data);//mate.lobbyReceive(data.message));
+        console.log('New game');
+        console.log(games);
     });
 });
