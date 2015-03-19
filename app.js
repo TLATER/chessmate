@@ -128,9 +128,10 @@ function room(roomName, whitePlayer) {
     this.board = this.game.createGame();
     var that = this;
 
-    this.game.bus.on('sendMove', function(data) {
+    this.game.on('sendMove', function(data) {
+        console.log(data);
         that.board = that.game.display();
-        gameRooms.to(that.roomName).emit('board', { board: this.board });
+        gameRooms.to(that.roomName).emit('move', data);
     });
 }
 
@@ -161,14 +162,13 @@ gameRooms.on('connection', function(socket) {
                 games[i].playerCount++;
                 games[i].blackPlayer = socket.id;
                 addSocketToRoom(socket, games[i].roomName);
-                gameRooms.to(games[i].roomName)
-                             .emit('board', { board: games[i].game.display() });
+                socket.emit('board', { board: games[i].game.display() });
 
                 var message = 'An opponent connected!';
-                gameRooms.to(name).emit('message', { message: message });
+                gameRooms.to(games[i].roomName)
+                                         .emit('message', { message: message });
 
                 console.log('Joined game');
-                console.log(games[i].board);
                 return;
             }
         }
@@ -178,15 +178,13 @@ gameRooms.on('connection', function(socket) {
         var name = 'game-standard-' + games.length;
         games.push(new room(name, socket.id));
         addSocketToRoom(socket, name);
-        gameRooms.to(name)
-                       .emit('board', { board: games[games.length - 1].board });
+        socket.emit('board', { board: games[games.length - 1].board });
 
         var message = 'Please wait while we find an opponent :)';
 
-        gameRooms.to(name).emit('message', { message: message });
+        socket.emit('message', { message: message });
 
         console.log('Created game');
-        console.log(games[games.length - 1].board);
     });
 
     socket.on('send', function(data) {
@@ -195,7 +193,6 @@ gameRooms.on('connection', function(socket) {
                 console.error("Can't find user associated to socket.");
                 return;
             }
-            console.log(games);
 
             // Slightly ugly hack to find the game room element
             var room = games.filter(function(element) {
