@@ -4,15 +4,52 @@ var path = require('path');
 var port = process.env.PORT ? process.env.PORT : '3000';
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-// var mongoose = require('mongoose');
-// var user = mongoose.model("User");
+var mongoose = require('mongoose');
 
+var cookie = require('cookie');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // var passport = require('passport');
 // var flash = require('connect-flash');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var chessmate = require('chessmate');
+
+var database = mongoose.connection;
+var User;
+database.on('error', console.error);
+// Use database._hasOpened to check if this is already available
+database.on('open', function() {
+    console.log('Successfully connected to mongodb');
+});
+
+// This is a synchronous function, so anything that follows will have the
+// functions defined.
+mongoose.connect('mongodb://localhost');
+
+// The mongoDB schema used for chessmate users
+var userSchema = new mongoose.Schema({
+    username: String,
+    socketId: Number,
+    room: String
+});
+User = mongoose.model('User', userSchema);
+
+function setUser(socket) {
+    if (database._hasOpened) {
+        var newUser = new User({
+            username: 'Always',
+            socketId: socket.id,
+            room: ''
+        });
+        newUser.save(function(error) {
+            if (error)
+                console.log(error);
+        });
+    }
+    else
+        return false;
+}
 
 var routes = require('./srv/routes/index');
 
@@ -32,10 +69,14 @@ app.use(cookieParser('YOUwoNtevaaah6uess7H15'));
 app.use(require('stylus').middleware(path.join(__dirname, 'srv/public')));
 app.use(express.static(path.join(__dirname, 'srv/public')));
 
+var cookieName = 'Chessmate_cookie';
+var cookieSecret = 'YOUwoNtevaaah6uess7H15';
+var sessions = new MongoStore({ url: 'mongodb://localhost' });
+
 app.use(session({
-    name: 'Chessmate_cookie',
-    store: new session.MemoryStore(),
-    secret: 'YOUwoNtevaaah6uess7H15',
+    name: cookieName,
+    store: sessions,
+    secret: cookieSecret,
     saveUninitialized: true,
     resave: true,
     cookie: {
@@ -71,19 +112,13 @@ app.use(function(err, request, response, next) {
 var io = require('socket.io').listen(app.listen(port));
 io.set('log level', 2);
 
+// Implementation based on cookie parsing function from
+// https://github.com/adelura/socket.io-express-solution.git
+function cookieData(socket) {
+
+}
+
 /* The chessmate setup goes here */
-
-// var board;
-io.sockets.on('connection', function(socket) {
-//     if (board === undefined)
-//         board = mate.createGame();
-//     socket.emit('message', { board: board });
-});
-
-// mate.bus.on('sendMove', function(data) {
-//     io.sockets.emit('message', data);
-// });
-
 function room(roomName, whitePlayer) {
     this.roomName = roomName;
     this.playerCount = 1;
@@ -91,29 +126,46 @@ function room(roomName, whitePlayer) {
     this.blackPlayer;
     this.game = new chessmate();
     this.board = this.game.createGame();
+    var that = this;
 
     this.game.bus.on('sendMove', function(data) {
-        this.board = this.game.display();
-        gameRooms.to(this.roomName).emit('board', { board: this.board });
+        that.board = that.game.display();
+        gameRooms.to(that.roomName).emit('board', { board: this.board });
     });
+}
+
+// Add the user associated with a socket to a game room
+function addSocketToRoom(socket, roomName) {
+    // Callback for findOneAndUpdate
+    function updateUser(error, user) {
+        console.log('Successfully added user to room');
+    }
+
+    User.findOneAndUpdate({ socketId: socket.id },
+                          { room: roomName },
+                          updateUser);
+    socket.join(roomName);
 }
 
 /* The chessmate games */
 var games = [];
 var gameRooms = io.of('/gameRooms');
 gameRooms.on('connection', function(socket) {
+
     // If someone is looking for a new game
     socket.on('newGame', function() {
-
         // Go through all games and see if there is a game waiting for someone
         // to join, if there is, subscribe this socket
         for (var i = 0; i < games.length; i++) {
             if (games[i].playerCount < 2) {
                 games[i].playerCount++;
-                games[i].blackPlayer = socket;
-                socket.join(games[i].roomName);
+                games[i].blackPlayer = socket.id;
+                addSocketToRoom(socket, games[i].roomName);
                 gameRooms.to(games[i].roomName)
                              .emit('board', { board: games[i].game.display() });
+
+                var message = 'An opponent connected!';
+                gameRooms.to(name).emit('message', { message: message });
 
                 console.log('Joined game');
                 console.log(games[i].board);
@@ -124,8 +176,8 @@ gameRooms.on('connection', function(socket) {
         // If all games are full, create a new game,
         // add a new player and subscribe the socket
         var name = 'game-standard-' + games.length;
-        games.push(new room(name, socket));
-        socket.join(name);
+        games.push(new room(name, socket.id));
+        addSocketToRoom(socket, name);
         gameRooms.to(name)
                        .emit('board', { board: games[games.length - 1].board });
 
@@ -134,24 +186,42 @@ gameRooms.on('connection', function(socket) {
         gameRooms.to(name).emit('message', { message: message });
 
         console.log('Created game');
-        console.log(games[games.length - 1]);
+        console.log(games[games.length - 1].board);
     });
 
     socket.on('send', function(data) {
-        if (socket.game.isCommand(data.message))
-            socket.emit('message', socket.game.receive(data.message));
-        else
-            gameRooms.to(socket.game.roomName).emit
-                                 ('message', socket.game.receive(data.message));
+        User.findOne({ socketId: socket.id }, function(error, user) {
+            if (error) {
+                console.error("Can't find user associated to socket.");
+                return;
+            }
+            console.log(games);
+
+            // Slightly ugly hack to find the game room element
+            var room = games.filter(function(element) {
+                return element.roomName === user.room;
+            });
+            var game = room[0].game;
+
+            if (game.isCommand(data.message))
+                socket.emit('message', game.receive(data.message));
+            else
+                gameRooms.to(room[0].roomName).emit
+                                        ('message', game.receive(data.message));
+        });
     });
 });
 
 /* The chessmate lobby */
 var lobbyRooms = io.of('/lobbyRooms');
 lobbyRooms.on('connection', function(socket) {
+    setUser(socket);
     socket.emit('welcome', 'Welcome to the server! Type /help for a list of ' +
                            'commands or /newGame to start a new game.');
     socket.on('send', function(data) {
+        User.findOne({ socketId: socket.id }, function(error, user) {
+            console.log(error || user);
+        });
         //if (mate.isLobbyCommand(data.message))
             //socket.emit('message', mate.lobbyReceive(data.message));
         //else
