@@ -17,8 +17,9 @@
 
             <div class='scoreStrip black'>
               <div class='score'>
-                <div class= 'spanLeft'>black</div>
-                <div class= 'spanRight'>time: 00:00</div>
+                <div class = 'leftDisplay'>black</div>
+                <div class = 'centerDisplay'></div>
+                <div class = 'rightDisplay' id = 'blackPlayer'></div>
               </div>
             </div>
 
@@ -44,8 +45,9 @@
 
             <div class='scoreStrip white'>
               <div class='score'>
-                <div class= 'spanLeft'>white</div>
-                <div class= 'spanRight'>time: 00:00</div>
+                <div class = 'leftDisplay'>white</div>
+                <div class = 'centerDisplay' id = 'timer'></div>
+                <div class = 'rightDisplay' id = 'whitePlayer'></div>
               </div>
             </div>
 
@@ -61,7 +63,7 @@
         </div>
       </div>
 
-      <div id='lobby' class='roundedContainer'>
+      <div id='lobby' class='roundedContainer large'>
         <div id='lobbyContainer'>
           <div id='lobbyMessages'></div>
           <input id='lobbyInput'></div>

@@ -125,13 +125,18 @@ app.use(express.static(__dirname + '/srv/public'));
 
 // Catch user registration here
 app.post('/register/submit', function(request, response) {
-    if (request.body.name === '')
+    console.log(request.body);
+    if (request.body.name === '') {
         // Flash that the username is empty
         response.redirect('/register');
+        return;
+    }
 
-    if (request.password === '')
+    if (request.password === '') {
         // Flash that the password is empty
         response.redirect('/register');
+        return;
+    }
 
     User.findOne({ username: request.body.name }, function(error, user) {
         if (error) {
@@ -235,11 +240,19 @@ function room(roomName, whitePlayer) {
     this.game = new chessmate();
     this.board = this.game.createGame();
     this.colorTurn = 1;
-    this.white = whitePlayer;
+    this.whitePlayer = whitePlayer;
     this.blackPlayer;
     var that = this;
 
     this.game.on('sendMove', function(data) {
+        if (data === 'checkmate') {
+
+            console.log(gameRooms.manager.rooms[this.roomName]);
+
+            // for(var i = 0; i < users.length; i++) {
+            //     io.sockets.socket(users[i]).leave();
+            // }
+        }
         console.log(data);
         that.board = that.game.display();
         gameRooms.to(that.roomName).emit('move', data);
@@ -282,49 +295,54 @@ gameRooms.on('connection', function(socket) {
 
     // If someone is looking for a new game
     socket.on('newGame', function() {
+        console.log(that.username);
         // Test if the user is an actual user (and not guest)
         if (that.username === undefined) {
             socket.emit('message', { message: 'You need to be logged in to '
                                             + 'do this.'});
             return;
         }
-        // Go through all games and see if there is a game waiting for someone
-        // to join, if there is, subscribe this socket
-        for (var i = 0; i < games.length; i++) {
-            if (games[i].playerCount < 2) {
-                games[i].playerCount++;
-                games[i].blackPlayer = socket.id;
-                addSocketToRoom(socket, games[i].roomName);
-                setUserColor(socket, 0);
-                games[i].blackPlayer = that.username;
-                socket.emit('board', { board: games[i].game.display() });
+        else {
+            // Go through all games and see if there is a game waiting for
+            // someone to join, if there is, subscribe this socket
+            for (var i = 0; i < games.length; i++) {
+                if (games[i].playerCount < 2) {
+                    games[i].playerCount++;
+                    games[i].blackPlayer = socket.id;
+                    addSocketToRoom(socket, games[i].roomName);
+                    setUserColor(socket, 0);
+                    games[i].blackPlayer = that.username;
+                    socket.emit('board', { board: games[i].game.display() });
 
-                var message = 'An opponent connected!';
-                gameRooms.to(games[i].roomName)
+                    var message = 'An opponent connected!';
+                    gameRooms.to(games[i].roomName)
                                          .emit('message', { message: message });
-                gameRooms.to(games[i].roomName)
-                                .emit('players', { black: games[i].blackPlayer,
-                                                   white: games[i].whitePlayer }
-                                                   );
+                    var players = { black: games[i].blackPlayer,
+                                    white: games[i].whitePlayer };
 
-                console.log('Joined game');
-                return;
+                    gameRooms.to(games[i].roomName)
+                                    .emit('players', players);
+
+                    console.log('Joined game');
+                    return;
+                }
             }
+
+            // If all games are full, create a new game,
+            // add a new player and subscribe the socket
+            var name = 'game-standard-' + games.length;
+            games.push(new room(name, that.username));
+            addSocketToRoom(socket, name);
+            setUserColor(socket, 1);
+            socket.emit('board',
+                { board: games[games.length - 1].game.display() });
+
+            message = 'Please wait while we find an opponent :)';
+
+            socket.emit('message', { message: message });
+
+            console.log('Created game');
         }
-
-        // If all games are full, create a new game,
-        // add a new player and subscribe the socket
-        var name = 'game-standard-' + games.length;
-        games.push(new room(name, that.username));
-        addSocketToRoom(socket, name);
-        setUserColor(socket, 1);
-        socket.emit('board', { board: games[games.length - 1].game.display() });
-
-        message = 'Please wait while we find an opponent :)';
-
-        socket.emit('message', { message: message });
-
-        console.log('Created game');
     });
 
     socket.on('send', function(data) {
@@ -405,6 +423,11 @@ lobbyRooms.on('connection', function(socket) {
         });
     });
     socket.on('disconnect', function() {
+        User.findOne({ socket: socket.id }), function(error, user) {
+            gameRooms.to(user.room)
+                .emit('message', { message: user.username + 'disconnected.' });
+            console.log(io.manager.rooms[user.room]);
+        };
         User.findOneAndUpdate({ socketId: socket.id },
                               { socketId: '', currentColor: '', room: '' },
                               function(error, user) {

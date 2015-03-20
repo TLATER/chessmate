@@ -38,6 +38,10 @@ function gamesConnect() {
 
     gamesSocket.on('move', function(data) {
         console.log(data.move);
+        if (data.move === 'checkmate') {
+            var addToChat ="<div class='serverMessage'>The game is over!</div>";
+            output.append("<div class='chatMessage'>" + addToChat + "</div>");
+        }
         // JSON of the move the client wants to make
         var desiredMove = JSON.parse(data.move);
         var currentPositionID = '#'+desiredMove[0];
@@ -56,8 +60,10 @@ function gamesConnect() {
         console.log('*'+test);
     });
 
-    gamesSocket.on('player', function(data) {
+    gamesSocket.on('players', function(data) {
         console.log(data);
+        $('#blackPlayer').html(data.black);
+        $('#whitePlayer').html(data.white);
     });
 
     gamesSocket.on('error', function(data) {
@@ -102,6 +108,8 @@ function lobbyConnect() {
 
             if (text === '/newGame') {
                 if (!playing) {
+                    $('#game').toggleClass('hidden');
+                    $('#lobby').toggleClass('large');
                     gamesSocket.emit('newGame');
                     playing = true;
                 } else {
@@ -208,3 +216,8 @@ function findPiece(id) {
         } // else
     } // for
 } // findPiece
+
+window.onload = function() {
+    gamesConnect();
+    lobbyConnect();
+};
