@@ -31,7 +31,8 @@ router.get('/register', function(request, response){
     else
         username = request.session.username;
 
-    response.render('register', { title: 'register', user: username });
+    response.render('register', { error: request.flash('error'),
+                                  title: 'register', user: username });
 });
 
 router.get('/login', function(request, response){
@@ -41,7 +42,7 @@ router.get('/login', function(request, response){
     else
         username = request.session.username;
 
-    response.render('login', { title: 'login', user: username });
+    response.render('login', { error: request.flash('error'), user: username });
 });
 
 module.exports = router;

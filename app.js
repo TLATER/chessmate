@@ -9,7 +9,6 @@ var mongoose = require('mongoose');
 var cookie = require('cookie');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
@@ -100,6 +99,8 @@ app.use(cookieParser('YOUwoNtevaaah6uess7H15'));
 app.use(require('stylus').middleware(path.join(__dirname, 'srv/public')));
 app.use(express.static(path.join(__dirname, 'srv/public')));
 
+app.use(flash());
+
 var cookieName = 'Chessmate_cookie';
 var cookieSecret = 'YOUwoNtevaaah6uess7H15';
 var sessions = new MongoStore({ url: 'mongodb://localhost' });
@@ -127,13 +128,13 @@ app.use(express.static(__dirname + '/srv/public'));
 app.post('/register/submit', function(request, response) {
     console.log(request.body);
     if (request.body.name === '') {
-        // Flash that the username is empty
+        request.flash('error', 'Please specify a username');
         response.redirect('/register');
         return;
     }
 
-    if (request.password === '') {
-        // Flash that the password is empty
+    if (request.body.password === '') {
+        request.flash('error', 'Please specify a password');
         response.redirect('/register');
         return;
     }
@@ -150,12 +151,12 @@ app.post('/register/submit', function(request, response) {
                 response.redirect('/game');
             }
             else {
-                // Flash that the passwords don't match
+                request.flash('error', 'The passwords need to match');
                 response.redirect('/register');
             }
         }
         else {
-            // Flash that the user exists
+            request.flash('error', 'User already exists');
             response.redirect('/register');
         }
     });
@@ -168,7 +169,7 @@ app.post('/login/submit', function(request, response) {
             console.log(error);
         }
         else if (user === null) {
-            // Flash that the user doesn't exist
+            request.flash('error', 'User not found');
             response.redirect('/login');
             return;
         }
@@ -176,6 +177,7 @@ app.post('/login/submit', function(request, response) {
         var correctPassword =
             bcrypt.compareSync(request.body.password, user.password);
         if (!correctPassword) {
+            request.flash('error', "User and password don't match");
             response.redirect('/login');
             return;
         }
@@ -253,6 +255,12 @@ function room(roomName, whitePlayer) {
             //     io.sockets.socket(users[i]).leave();
             // }
         }
+        if (data.castle)
+            if (that.colorTurn === 1)
+                that.colorTurn = 0;
+            else
+                that.colorTurn = 1;
+
         console.log(data);
         that.board = that.game.display();
         gameRooms.to(that.roomName).emit('move', data);
