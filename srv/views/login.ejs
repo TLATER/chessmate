@@ -16,22 +16,19 @@
             </div>
 
             <div id='loginBox' class='loginRegisterForm'>
-                <form class='innerForm' action='/register' method="post">
+                <form class='innerForm' action='/login/submit' method="post">
                     <div class='oneField'>
                         <div class='fieldName'>Name</div>
-                        <input class='inputBox' id='username' type='text'>
+                        <input class='inputBox' id='username' type='text' name='name'>
                     </div>
                     <div class='oneField'>
                         <div class='fieldName'>Password</div>
-                        <input class='inputBox' id='password' type='password'>
+                        <input class='inputBox' id='password' type='password' name='password'>
                     </div>
 
                     <div class='submitLogin'>
-                        <a class='submitLogin' href="/game">
-                            <div class='button loginButton wrappedButton'>
-                                Login
-                            </div>
-                        </a>
+                        <input type='submit' value='Login'
+                               class='button loginButton wrappedButton'>
                     </div>
                 </form>
             </div>

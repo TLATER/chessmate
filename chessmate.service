@@ -1,0 +1,15 @@
+[Unit]
+Requires=mongodb.service
+After=network.target
+Description=Chess simulation webserver
+
+[Service]
+ExecStart=/usr/bin/node /srv/chessmate/app.js
+StandardOutput=syslog
+SyslogIdentifier=chessmate
+User=chessmate
+Group=chessmate
+Environment=DEBUG=myapp PORT=3597
+
+[Install]
+WantedBy=multi-user.target

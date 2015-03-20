@@ -8,9 +8,14 @@
     </div>
     <div id='headerRight'>
         <div id='buttonWrapper'>
-            <div id='Sign Out' class='button flatButton wrappedButton'>
-                Sign Out
+            <div id='username' class='username'>
+                <%= user %>
             </div>
+            <a href='/signout'>
+                <div id='signout' class='button flatButton wrappedButton'>
+                    Sign Out
+                </div>
+            </a>
         </div>
     </div>
 </div>

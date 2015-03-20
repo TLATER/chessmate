@@ -5,23 +5,43 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(request, response) {
-    response.render('index', { title: 'Chessmate' });
+    var username;
+    if (request.session.username === undefined)
+        username = 'Guest';
+    else
+        username = request.session.username;
+
+    response.render('index', { title: 'Chessmate', user: username });
 });
 
 router.get('/game', function(request, response) {
-    response.render('game', { title: 'Chessmate' });
+    var username;
+    if (request.session.username === undefined)
+        username = 'Guest';
+    else
+        username = request.session.username;
+
+    response.render('game', { user: username });
 });
 
 router.get('/register', function(request, response){
-    response.render('register', { title: 'register'});
+    var username;
+    if (request.session.username === undefined)
+        username = 'Guest';
+    else
+        username = request.session.username;
+
+    response.render('register', { title: 'register', user: username });
 });
 
 router.get('/login', function(request, response){
-    response.render('login', { title: 'login'});
-});
+    var username;
+    if (request.session.username === undefined)
+        username = 'Guest';
+    else
+        username = request.session.username;
 
-router.get('/socketTest', function(request, response) {
-    response.render('socket/socketTest.ejs');
+    response.render('login', { title: 'login', user: username });
 });
 
 module.exports = router;

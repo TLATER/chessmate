@@ -16,7 +16,16 @@ function gamesConnect() {
     };
 
     gamesSocket.on('message', function(data) {
-        output.append("<div class='chatMessage'>" + data.message +"</div>");
+        // If we have a username this message is sent from a user, otherwise
+        // from the server. Different css classes for each case.
+        var addToChat;
+        if (data.username)
+            addToChat = "<div class='username'>" + data.username
+                         + ':</div>   ' + data.message;
+        else
+            addToChat = "<div class='serverMessage'>" + data.message + "</div>";
+
+        output.append("<div class='chatMessage'>" + addToChat + "</div>");
         var height = output[0].scrollHeight;
         output.scrollTop(height);
     });
@@ -46,6 +55,14 @@ function gamesConnect() {
         console.log('*'+currentPositionID);
         console.log('*'+test);
     });
+
+    gamesSocket.on('player', function(data) {
+        console.log(data);
+    });
+
+    gamesSocket.on('error', function(data) {
+        output.append("<div class='errorMessage'>" + data + "</div>");
+    });
 }
 
 function lobbyConnect() {
@@ -55,7 +72,16 @@ function lobbyConnect() {
     lobbySocket.on('message', function(data) {
         console.log(data);
         if (data.message !== undefined) {
-            output.append("<div class='chatMessage'>" + data.message +"</div>");
+
+            var addToChat;
+            if (data.username)
+                addToChat = "<div class='username'>" + data.username
+                             + ':</div>   ' + data.message;
+            else
+                addToChat = "<div class='serverMessage'>"
+                             + data.message + "</div>";
+
+            output.append("<div class='chatMessage'>" + addToChat + "</div>");
             var height = output[0].scrollHeight;
             output.scrollTop(height);
         }
@@ -79,8 +105,9 @@ function lobbyConnect() {
                     gamesSocket.emit('newGame');
                     playing = true;
                 } else {
-                    output.append("<div class='chatMessage'>You can't start a" +
-                               " new game when you are already playing.</div>");
+                    output.append("<div class='chatMessage serverMessage'>"
+                                  + "You can't start a new game when you are "
+                                  + "already playing.</div>");
                     var height = output[0].scrollHeight;
                     output.scrollTop(height);
                 }

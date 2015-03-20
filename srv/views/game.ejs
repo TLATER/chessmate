@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title%></title>
+    <title>Chessmate</title>
     <% include partials/head %>
     <link rel="stylesheet" href="/stylesheets/game.css"></link>
     <link rel="stylesheet" href="/stylesheets/pieces.css"></link>
@@ -30,7 +30,7 @@
 
                     <% var white = ( ( i + j ) % 2 ) === 0 %>
                     <%var alphabet = "ABCDEFGH".split("");%>
-                    <div class='boardCell <%= white ? 'white' : 'black' %>' 
+                    <div class='boardCell <%= white ? 'white' : 'black' %>'
                          id= '<%= alphabet[j - 1]+(8 - (i - 1))%>'>
                     <div ></div>
                       <div class= 'stretchy-wrapper'>

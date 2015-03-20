@@ -5,7 +5,6 @@
     <% include partials/head.ejs %>
     <title>Register with chessmate!</title>
     <link rel="stylesheet" href="/stylesheets/login.css"></link>
-    <link rel="stylesheet" href="/stylesheets/standard.css"></link>
 </head>
 
 <body>
@@ -16,28 +15,25 @@
                 Register
             </div>
             <div id='registerBox' class='loginRegisterForm'>
-                <form class='innerForm' action='/register' method="post">
+                <form class='innerForm' action='/register/submit' method="post">
                     <div class='oneField'>
                         <div class='fieldName'>Name</div>
-                        <input class='inputBox' id='username' type='text'>
-                    </div>
-                    <div class='oneField'>
-                        <div class='fieldName'>Email</div>
-                        <input class='inputBox' id='email' type='email'>
+                        <input class='inputBox' id='username'
+                         type='text' name='name'>
                     </div>
                     <div class='oneField'>
                         <div class='fieldName'>Password</div>
-                        <input class='inputBox' id='password' type='password'>
+                        <input class='inputBox' id='password'
+                         type='password' name='password'>
                     </div>
                     <div class='oneField'>
                         <div class='fieldName'>Repeat Password</div>
-                        <input class='inputBox' id='repeatPassword' type='password'>
+                        <input class='inputBox' id='repeatPassword'
+                         type='password' name='confirm'>
                     </div>
                     <div class='submitLogin'>
-                        <a class='submitLogin' href="/game">
-                            <div class='button loginButton wrappedButton'>
-                                Register
-                            </div>
+                        <input type='submit' value='Register'
+                               class='button loginButton wrappedButton'>
                         </a>
                     </div>
                 </form>
